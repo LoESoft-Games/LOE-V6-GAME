@@ -1,0 +1,7 @@
+﻿[
+  {
+    "title": "Outdated Client",
+    "titleColor": 16711680,
+    "description": "Reload your browser to update client. You are trying to connect using build <b>{CLIENT_BUILD_VERSION}</b> instead of <b>{SERVER_BUILD_VERSION}</b>."
+  }
+]
