@@ -20,7 +20,7 @@ namespace gameserver.realm.entity.player
             Position target = pkt.ItemUsePos;
             Mp -= item.MpCost;
             IContainer con = Owner?.GetEntity(pkt.SlotObject.ObjectId) as IContainer;
-            if(con == null) return true;
+            if (con == null) return true;
             if (CheatEngineDetectSlot(item, pkt, con)) CheatEngineDetect(item, pkt);
             if (item.IsBackpack) Backpack();
             if (item.XpBooster) XpBooster(item);
@@ -129,15 +129,15 @@ namespace gameserver.realm.entity.player
 
         private void Shoot(RealmTime time, Item item, Position target)
         {
-            double arcGap = item.ArcGap*Math.PI/180;
-            double startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1)/2*arcGap;
+            double arcGap = item.ArcGap * Math.PI / 180;
+            double startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
             ProjectileDesc prjDesc = item.Projectiles[0]; //Assume only one
 
             for (int i = 0; i < item.NumProjectiles; i++)
             {
                 Projectile proj = CreateProjectile(prjDesc, item.ObjectType,
-                    (int) StatsManager.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage),
-                    time.TotalElapsedMs, new Position {X = X, Y = Y}, (float) (startAngle + arcGap*i));
+                    (int)StatsManager.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage),
+                    time.TotalElapsedMs, new Position { X = X, Y = Y }, (float)(startAngle + arcGap * i));
                 Owner?.EnterWorld(proj);
                 FameCounter.Shoot(proj);
             }
@@ -156,8 +156,8 @@ namespace gameserver.realm.entity.player
                             DurationMS = (int) eff.EffectDuration
                         }
                     });
-                int remainingDmg = (int) StatsManager.GetDefenseDamage(enemy, eff.TotalDamage, enemy.ObjectDesc.Defense);
-                int perDmg = remainingDmg*1000/eff.DurationMS;
+                int remainingDmg = (int)StatsManager.GetDefenseDamage(enemy, eff.TotalDamage, enemy.ObjectDesc.Defense);
+                int perDmg = remainingDmg * 1000 / eff.DurationMS;
                 WorldTimer tmr = null;
                 int x = 0;
                 tmr = new WorldTimer(100, (w, t) =>
@@ -170,7 +170,7 @@ namespace gameserver.realm.entity.player
                         Color = new ARGB(0xffddff00)
                     }, null);
 
-                    if (x%10 == 0)
+                    if (x % 10 == 0)
                     {
                         int thisDmg;
                         if (remainingDmg < perDmg) thisDmg = remainingDmg;
@@ -212,16 +212,16 @@ namespace gameserver.realm.entity.player
         {
             if (HasBackpack)
                 return true;
-            Client.Character.Backpack = new [] {-1, -1, -1, -1, -1, -1, -1, -1};
+            Client.Character.Backpack = new[] { -1, -1, -1, -1, -1, -1, -1, -1 };
             HasBackpack = true;
             Client.Character.HasBackpack = true;
             Client?.Save();
             Array.Resize(ref inventory, 20);
             int[] slotTypes =
-				Utils.FromCommaSepString32(
-					Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
+                Utils.FromCommaSepString32(
+                    Manager.GameData.ObjectTypeToElement[ObjectType].Element("SlotTypes").Value);
             Array.Resize(ref slotTypes, 20);
-            for (int i = 0; i<slotTypes.Length; i++)
+            for (int i = 0; i < slotTypes.Length; i++)
                 if (slotTypes[i] == 0) slotTypes[i] = 10;
             SlotTypes = slotTypes;
             return false;
@@ -362,7 +362,7 @@ namespace gameserver.realm.entity.player
             if (eff.Stats == StatsType.Dexterity) idx = 5;
             if (eff.Stats == StatsType.Vitality) idx = 6;
             if (eff.Stats == StatsType.Wisdom) idx = 7;
-                            
+
             int bit = idx + 39;
 
             int amountSBA = eff.Amount;
@@ -375,7 +375,7 @@ namespace gameserver.realm.entity.player
                 durationSBA = (int)(UseWisMod(eff.DurationSec) * 1000);
                 rangeSBA = UseWisMod(eff.Range);
             }
-                            
+
             this?.Aoe(rangeSBA, true, player =>
             {
                 // TODO support for noStack StatBoostAura attribute (paladin total hp increase / insta heal)
@@ -432,7 +432,7 @@ namespace gameserver.realm.entity.player
         {
             int durationCES = eff.DurationMS;
             if (eff.UseWisMod)
-                durationCES = (int) (UseWisMod(eff.DurationSec)*1000);
+                durationCES = (int)(UseWisMod(eff.DurationSec) * 1000);
 
             uint color = 0xffffffff;
             switch (eff.ConditionEffect.Value)
@@ -455,7 +455,7 @@ namespace gameserver.realm.entity.player
                 EffectType = EffectType.Nova,
                 TargetId = Id,
                 Color = new ARGB(color),
-                PosA = new Position {X = 2F}
+                PosA = new Position { X = 2F }
             }, null);
         }
 
@@ -494,7 +494,7 @@ namespace gameserver.realm.entity.player
                 EffectType = EffectType.Nova,
                 TargetId = Id,
                 Color = new ARGB(color),
-                PosA = new Position {X = rangeCEA}
+                PosA = new Position { X = rangeCEA }
             }, p => this?.Dist(p) < 25);
         }
 
@@ -514,7 +514,7 @@ namespace gameserver.realm.entity.player
                 amountHN = (int)UseWisMod(eff.Amount, 0);
                 rangeHN = UseWisMod(eff.Range);
             }
-                        
+
             List<Message> pkts = new List<Message>();
             this?.Aoe(rangeHN, true, player => { ActivateHealHp(player as Player, amountHN, pkts); });
             pkts.Add(new SHOWEFFECT
@@ -522,7 +522,7 @@ namespace gameserver.realm.entity.player
                 EffectType = EffectType.Nova,
                 TargetId = Id,
                 Color = new ARGB(0xffffffff),
-                PosA = new Position {X = rangeHN}
+                PosA = new Position { X = rangeHN }
             });
             BroadcastSync(pkts, p => this.Dist(p) < 25);
         }
@@ -537,13 +537,13 @@ namespace gameserver.realm.entity.player
         private void MagicNova(ActivateEffect eff)
         {
             List<Message> pkts = new List<Message>();
-            this?.Aoe(eff.Range/2, true, player => { ActivateHealMp(player as Player, eff.Amount, pkts); });
+            this?.Aoe(eff.Range / 2, true, player => { ActivateHealMp(player as Player, eff.Amount, pkts); });
             pkts.Add(new SHOWEFFECT
             {
                 EffectType = EffectType.Nova,
                 TargetId = Id,
                 Color = new ARGB(0xffffffff),
-                PosA = new Position {X = eff.Range}
+                PosA = new Position { X = eff.Range }
             });
             Owner?.BroadcastPackets(pkts, null);
         }
@@ -593,7 +593,7 @@ namespace gameserver.realm.entity.player
                 Color = new ARGB(0xFFFF0000),
                 TargetId = Id,
                 PosA = target,
-                PosB = new Position {X = target.X + eff.Radius, Y = target.Y}
+                PosB = new Position { X = target.X + eff.Radius, Y = target.Y }
             });
 
             int totalDmg = 0;
@@ -621,7 +621,7 @@ namespace gameserver.realm.entity.player
                     {
                         EffectType = EffectType.Flow,
                         TargetId = b.Id,
-                        PosA = new Position {X = a.X, Y = a.Y},
+                        PosA = new Position { X = a.X, Y = a.Y },
                         Color = new ARGB(0xffffffff)
                     });
                 }
@@ -661,7 +661,7 @@ namespace gameserver.realm.entity.player
                 EffectType = EffectType.Collapse,
                 TargetId = Id,
                 PosA = target,
-                PosB = new Position {X = target.X + 3, Y = target.Y},
+                PosB = new Position { X = target.X + 3, Y = target.Y },
                 Color = new ARGB(0xFF00D0)
             });
             Owner?.Aoe(target, 3, false, enemy =>
@@ -717,7 +717,7 @@ namespace gameserver.realm.entity.player
         {
             Enemy start = null;
             double angle = Math.Atan2(target.Y - Y, target.X - X);
-            double diff = Math.PI/3;
+            double diff = Math.PI / 3;
             Owner?.Aoe(target, 6, false, enemy =>
             {
                 if (!(enemy is Enemy)) return;
@@ -750,14 +750,14 @@ namespace gameserver.realm.entity.player
             for (int i = 0; i < targets.Length; i++)
             {
                 if (targets[i] == null) break;
-                if(targets[i].HasConditionEffect(ConditionEffectIndex.Invincible)) continue;
-                Entity prev = i == 0 ? (Entity) this : targets[i - 1];
+                if (targets[i].HasConditionEffect(ConditionEffectIndex.Invincible)) continue;
+                Entity prev = i == 0 ? (Entity)this : targets[i - 1];
                 targets[i]?.Damage(this, time, eff.TotalDamage, false);
                 if (eff.ConditionEffect != null)
                     targets[i].ApplyConditionEffect(new ConditionEffect
                     {
                         Effect = eff.ConditionEffect.Value,
-                        DurationMS = (int) (eff.EffectDuration*1000)
+                        DurationMS = (int)(eff.EffectDuration * 1000)
                     });
                 pkts.Add(new SHOWEFFECT
                 {
@@ -769,7 +769,7 @@ namespace gameserver.realm.entity.player
                         X = targets[i].X,
                         Y = targets[i].Y
                     },
-                    PosB = new Position {X = 350}
+                    PosB = new Position { X = 350 }
                 });
             }
             BroadcastSync(pkts, p => this?.Dist(p) < 25);
@@ -817,27 +817,27 @@ namespace gameserver.realm.entity.player
 
         private void RemoveNegativeConditions(ActivateEffect eff)
         {
-            this?.Aoe(eff.Range/2, true, player => { ApplyConditionEffect(NegativeEffs); });
+            this?.Aoe(eff.Range / 2, true, player => { ApplyConditionEffect(NegativeEffs); });
             BroadcastSync(new SHOWEFFECT
             {
                 EffectType = EffectType.Nova,
                 TargetId = Id,
                 Color = new ARGB(0xffffffff),
-                PosA = new Position {X = eff.Range/2}
+                PosA = new Position { X = eff.Range / 2 }
             }, p => this?.Dist(p) < 25);
         }
 
         private void RemoveNegativeConditionsSelf()
+        {
+            ApplyConditionEffect(NegativeEffs);
+            Owner?.BroadcastPacket(new SHOWEFFECT
             {
-                ApplyConditionEffect(NegativeEffs);
-                Owner?.BroadcastPacket(new SHOWEFFECT
-                {
-                    EffectType = EffectType.Nova,
-                    TargetId = Id,
-                    Color = new ARGB(0xffffffff),
-                    PosA = new Position {X = 1}
-                }, null);
-            }
+                EffectType = EffectType.Nova,
+                TargetId = Id,
+                Color = new ARGB(0xffffffff),
+                PosA = new Position { X = 1 }
+            }, null);
+        }
 
         private void IncrementStat(ActivateEffect eff)
         {
@@ -974,7 +974,7 @@ namespace gameserver.realm.entity.player
             SaveToCharacter();
         }
 
-        private void ShurikenAbility(RealmTime time, Item item, Position target, USEITEM pkt) 
+        private void ShurikenAbility(RealmTime time, Item item, Position target, USEITEM pkt)
         {
             if (!ninjaShoot)
             {
@@ -1053,7 +1053,7 @@ namespace gameserver.realm.entity.player
 
         private void MysteryPortal()
         {
-            string[] dungeons = new []
+            string[] dungeons = new[]
             {
                 "Pirate Cave Portal",
                 "Forest Maze Portal",
@@ -1126,7 +1126,7 @@ namespace gameserver.realm.entity.player
             bool centerPlayer = eff.Center.Equals("player");
             int duration = (eff.UseWisMod) ? (int)(UseWisMod(eff.DurationSec) * 1000) : eff.DurationMS;
             float range = (eff.UseWisMod) ? UseWisMod(eff.Range) : eff.Range;
-                        
+
             Owner?.Aoe((eff.Center.Equals("mouse")) ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
             {
                 if (IsSpecial(entity.ObjectType)) return;
@@ -1158,7 +1158,7 @@ namespace gameserver.realm.entity.player
         {
 
         }
-        
+
         //TODO: needs implementation
         private void Exchange()
         {
@@ -1170,7 +1170,7 @@ namespace gameserver.realm.entity.player
         {
 
         }
-        
+
         //TODO: needs implementation
         private void Unlock()
         {

@@ -50,16 +50,16 @@ namespace gameserver.logic.behaviors
                     if (host.HasConditionEffect(ConditionEffectIndex.Stunned)) return;
                 double? tossAngle = randomToss ? Random.Next(0, 360) * Math.PI / 180 : angle;
                 Entity en = null;
-                if (tossAngle == null) 
+                if (tossAngle == null)
                     en = host.GetNearestEntity(range, null);
                 if (tossAngle == null && en == null) return;
 
-                Position target = tossAngle == null ? 
+                Position target = tossAngle == null ?
                 new Position
                 {
                     X = en.X,
                     Y = en.Y
-                } : 
+                } :
                 new Position
                 {
                     X = host.X + (float)(range * Math.Cos(tossAngle.Value)),
@@ -79,7 +79,7 @@ namespace gameserver.logic.behaviors
                 {
                     Entity entity = Entity.Resolve(world.Manager, child);
                     entity.Move(target.X, target.Y);
-                    if(entity is Enemy && host is Enemy)
+                    if (entity is Enemy && host is Enemy)
                         (entity as Enemy).Terrain = (host as Enemy).Terrain;
                     world.EnterWorld(entity);
                 }));

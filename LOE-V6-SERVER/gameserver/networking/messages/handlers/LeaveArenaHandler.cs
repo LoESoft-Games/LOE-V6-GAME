@@ -3,7 +3,7 @@
 using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
 using gameserver.realm;
-using common.config;
+using core.config;
 
 #endregion
 

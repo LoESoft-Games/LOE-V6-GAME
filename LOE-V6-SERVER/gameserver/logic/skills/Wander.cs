@@ -3,7 +3,7 @@
 using Mono.Game;
 using gameserver.realm;
 using gameserver.realm.terrain;
-using common;
+using core;
 
 #endregion
 
@@ -20,7 +20,7 @@ namespace gameserver.logic.behaviors
 
         public Wander(double speed, bool avoidGround = false, string ground = "Shallow Water")
         {
-            this.speed = (float) speed;
+            this.speed = (float)speed;
             this.avoidGround = avoidGround;
             this.ground = ground;
         }
@@ -29,7 +29,7 @@ namespace gameserver.logic.behaviors
         {
             WanderStorage storage;
             if (state == null) storage = new WanderStorage();
-            else storage = (WanderStorage) state;
+            else storage = (WanderStorage)state;
 
             Status = CycleStatus.NotStarted;
 
@@ -40,7 +40,7 @@ namespace gameserver.logic.behaviors
             {
                 storage.Direction = new Vector2(Random.Next(-1, 2), Random.Next(-1, 2));
                 storage.Direction.Normalize();
-                storage.RemainingDistance = period.Next(Random)/1000f;
+                storage.RemainingDistance = period.Next(Random) / 1000f;
                 Status = CycleStatus.Completed;
             }
 
@@ -59,7 +59,7 @@ namespace gameserver.logic.behaviors
                     return;
                 }
             }
-            host.ValidateAndMove(host.X + storage.Direction.X*dist, host.Y + storage.Direction.Y*dist);
+            host.ValidateAndMove(host.X + storage.Direction.X * dist, host.Y + storage.Direction.Y * dist);
             host.UpdateCount++;
 
             storage.RemainingDistance -= dist;

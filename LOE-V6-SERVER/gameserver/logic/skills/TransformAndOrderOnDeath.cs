@@ -24,7 +24,7 @@ namespace gameserver.logic.behaviors
             this.target = BehaviorDb.InitGameData.IdToObjectType[target];
             this.min = min;
             this.max = max;
-            this.probability = (float) probability;
+            this.probability = (float)probability;
             this.returnToSpawn = returnToSpawn;
             this.targetStateName = targetState;
             this.range = range;

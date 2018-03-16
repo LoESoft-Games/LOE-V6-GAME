@@ -119,7 +119,7 @@ namespace gameserver.realm
 
         public bool IsPassable(int x, int y)
         {
-            if (!Map.Contains(x, y)) 
+            if (!Map.Contains(x, y))
                 return false;
             WmapTile tile = Map[x, y];
             ObjectDesc desc;
@@ -463,7 +463,7 @@ namespace gameserver.realm
 
         protected void LoadMap(string embeddedResource, MapType type)
         {
-            if(embeddedResource == null) return;
+            if (embeddedResource == null) return;
             string mapType = type == MapType.Json ? "json" : "wmap";
             string resource = embeddedResource.Replace($".{mapType}", "");
             var stream = typeof(RealmManager).Assembly.GetManifestResourceStream($"gameserver.realm.world.maps.{mapType}.{resource}.{mapType}");

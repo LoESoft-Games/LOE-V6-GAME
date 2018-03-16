@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -34,10 +34,10 @@ namespace gameserver.networking.incoming
             Position.Write(wtr);
             if (Records == null)
             {
-                wtr.Write((ushort) 0);
+                wtr.Write((ushort)0);
                 return;
             }
-            wtr.Write((ushort) Records.Length);
+            wtr.Write((ushort)Records.Length);
             foreach (TimedPosition i in Records)
                 i.Write(wtr);
         }

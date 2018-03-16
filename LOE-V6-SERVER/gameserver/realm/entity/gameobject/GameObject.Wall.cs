@@ -20,13 +20,13 @@ namespace gameserver.realm.entity
         {
             if (!Vulnerable || !(projectile.ProjectileOwner is Player)) return true;
             var prevHp = HP;
-            var dmg = (int) StatsManager.GetDefenseDamage(this, projectile.Damage, ObjectDesc.Defense);
+            var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, ObjectDesc.Defense);
             HP -= dmg;
             Owner.BroadcastPacket(new DAMAGE
             {
                 TargetId = Id,
                 Effects = 0,
-                Damage = (ushort) dmg,
+                Damage = (ushort)dmg,
                 Killed = !CheckHP(),
                 BulletId = projectile.ProjectileId,
                 ObjectId = projectile.ProjectileOwner.Self.Id

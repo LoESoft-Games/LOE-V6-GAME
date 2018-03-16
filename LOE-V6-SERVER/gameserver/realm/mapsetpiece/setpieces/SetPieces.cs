@@ -101,7 +101,7 @@ namespace gameserver.realm.mapsetpiece
                     {
                         pt.X = rand.Next(0, w);
                         pt.Y = rand.Next(0, h);
-                        rect = new Rect {x = pt.X, y = pt.Y, w = size, h = size};
+                        rect = new Rect { x = pt.X, y = pt.Y, w = size, h = size };
                         max--;
                     } while ((Array.IndexOf(dat.Item4, map[pt.X, pt.Y].Terrain) == -1 ||
                               rects.Any(_ => Rect.Intersects(rect, _))) &&

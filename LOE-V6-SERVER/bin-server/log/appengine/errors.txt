@@ -1,5 +1,0 @@
-2017-12-25 18:15:08,943 [3] WARN  AppEngine - [localhost] Request	->	/dailyLogin/fetchCalendar
-2017-12-25 18:15:33,861 [14] WARN  AppEngine - [localhost] Request	->	/friends/getList
-2017-12-25 18:15:33,861 [7] WARN  AppEngine - [localhost] Request	->	/friends/getRequests
-2017-12-25 18:15:36,653 [7] WARN  AppEngine - [localhost] Request	->	/log/logFteStep
-2017-12-25 18:15:46,224 [15] WARN  AppEngine - [localhost] Request	->	/log/logFteStep

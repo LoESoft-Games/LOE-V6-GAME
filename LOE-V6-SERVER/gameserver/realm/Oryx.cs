@@ -10,7 +10,7 @@ using gameserver.realm.entity;
 using gameserver.realm.entity.player;
 using gameserver.realm.mapsetpiece;
 using gameserver.realm.world;
-using common.config;
+using core.config;
 using gameserver.realm.terrain;
 using static gameserver.networking.Client;
 
@@ -472,7 +472,7 @@ namespace gameserver.realm
                 if (state[i] != 2) continue;
                 var x = diff[i];
                 var t = (WmapTerrain)(i + 1);
-                for (var j = 0; j < x; )
+                for (var j = 0; j < x;)
                 {
                     var objType = GetRandomObjType(spawn[t].Item2);
                     if (objType == 0) continue;

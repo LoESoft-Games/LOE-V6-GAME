@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using common;
+using core;
 using gameserver.realm.terrain;
 
 #endregion
@@ -20,16 +20,16 @@ namespace gameserver.realm.mapsetpiece
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            int radius = rand.Next(Size - 5, Size + 1)/2;
+            int radius = rand.Next(Size - 5, Size + 1) / 2;
             List<IntPoint> border = new List<IntPoint>();
 
             int[,] t = new int[Size, Size];
             for (int y = 0; y < Size; y++)
                 for (int x = 0; x < Size; x++)
                 {
-                    double dx = x - (Size/2.0);
-                    double dy = y - (Size/2.0);
-                    double r = Math.Sqrt(dx*dx + dy*dy);
+                    double dx = x - (Size / 2.0);
+                    double dy = y - (Size / 2.0);
+                    double r = Math.Sqrt(dx * dx + dy * dy);
                     if (r <= radius)
                     {
                         t[x, y] = 1;
@@ -39,7 +39,7 @@ namespace gameserver.realm.mapsetpiece
                 }
 
             HashSet<IntPoint> trees = new HashSet<IntPoint>();
-            while (trees.Count < border.Count*0.5)
+            while (trees.Count < border.Count * 0.5)
                 trees.Add(border[rand.Next(0, border.Count)]);
 
             foreach (IntPoint i in trees)
@@ -61,7 +61,7 @@ namespace gameserver.realm.mapsetpiece
                         WmapTile tile = world.Map[x + pos.X, y + pos.Y].Clone();
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
-                        tile.Name = "size:" + (rand.Next()%2 == 0 ? 120 : 140);
+                        tile.Name = "size:" + (rand.Next() % 2 == 0 ? 120 : 140);
                         if (tile.ObjId == 0) tile.ObjId = world.GetNextEntityId();
                         world.Map[x + pos.X, y + pos.Y] = tile;
                     }
@@ -69,7 +69,7 @@ namespace gameserver.realm.mapsetpiece
 
             Entity ent = Entity.Resolve(world.Manager, "Ent Ancient");
             ent.Size = 140;
-            ent.Move(pos.X + Size/2 + 1, pos.Y + Size/2 + 1);
+            ent.Move(pos.X + Size / 2 + 1, pos.Y + Size / 2 + 1);
             world.EnterWorld(ent);
         }
     }

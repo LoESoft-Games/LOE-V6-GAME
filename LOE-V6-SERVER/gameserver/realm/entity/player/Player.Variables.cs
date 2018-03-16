@@ -6,7 +6,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using gameserver.logic;
 using gameserver.networking;
-using common.config;
+using core.config;
 
 #endregion
 
@@ -104,18 +104,18 @@ namespace gameserver.realm.entity.player
         private bool worldBroadcast = true;
         private readonly Queue<Tuple<Message, Predicate<Player>>> pendingPackets = new Queue<Tuple<Message, Predicate<Player>>>();
         public TradeManager TradeHandler { get; private set; }
-		public int UpdatesSend { get; private set; }
-		public int UpdatesReceived { get; set; }
-		public const int SIGHTRADIUS = 15;
-		private const int APPOX_AREA_OF_SIGHT = (int)(Math.PI * SIGHTRADIUS * SIGHTRADIUS + 1);
-		private readonly HashSet<Entity> clientEntities = new HashSet<Entity>();
-		private readonly HashSet<IntPoint> clientStatic = new HashSet<IntPoint>(new IntPointComparer());
-		private readonly Dictionary<Entity, int> lastUpdate = new Dictionary<Entity, int>();
+        public int UpdatesSend { get; private set; }
+        public int UpdatesReceived { get; set; }
+        public const int SIGHTRADIUS = 15;
+        private const int APPOX_AREA_OF_SIGHT = (int)(Math.PI * SIGHTRADIUS * SIGHTRADIUS + 1);
+        private readonly HashSet<Entity> clientEntities = new HashSet<Entity>();
+        private readonly HashSet<IntPoint> clientStatic = new HashSet<IntPoint>(new IntPointComparer());
+        private readonly Dictionary<Entity, int> lastUpdate = new Dictionary<Entity, int>();
         public Dictionary<IntPoint, bool> visibleTiles;
-		private int mapHeight;
-		private int mapWidth;
-		private int tickId;
-		public List<IntPoint> blocksight = new List<IntPoint>();
+        private int mapHeight;
+        private int mapWidth;
+        private int tickId;
+        public List<IntPoint> blocksight = new List<IntPoint>();
         public static int oldstat { get; set; }
         public static Position targetlink { get; set; }
     }

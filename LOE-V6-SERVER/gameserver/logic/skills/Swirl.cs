@@ -18,9 +18,9 @@ namespace gameserver.logic.behaviors
 
         public Swirl(double speed = 1, double radius = 8, double acquireRange = 10, bool targeted = true)
         {
-            this.speed = (float) speed;
-            this.radius = (float) radius;
-            this.acquireRange = (float) acquireRange;
+            this.speed = (float)speed;
+            this.radius = (float)radius;
+            this.acquireRange = (float)acquireRange;
             this.targeted = targeted;
         }
 
@@ -35,13 +35,13 @@ namespace gameserver.logic.behaviors
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
-            SwirlState s = (SwirlState) state;
+            SwirlState s = (SwirlState)state;
 
             Status = CycleStatus.NotStarted;
 
             if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
-            int period = (int) (1000*radius/host.GetSpeed(speed, time)*(2*Math.PI));
+            int period = (int)(1000 * radius / host.GetSpeed(speed, time) * (2 * Math.PI));
             if (!s.Acquired &&
                 s.RemainingTime <= 0 &&
                 targeted)
@@ -51,12 +51,12 @@ namespace gameserver.logic.behaviors
                 {
                     //find circle which pass through host and player pos
                     double l = entity.Dist(host);
-                    float hx = (host.X + entity.X)/2;
-                    float hy = (host.Y + entity.Y)/2;
-                    double c = Math.Sqrt(Math.Abs(radius*radius - l*l)/4);
+                    float hx = (host.X + entity.X) / 2;
+                    float hy = (host.Y + entity.Y) / 2;
+                    double c = Math.Sqrt(Math.Abs(radius * radius - l * l) / 4);
                     s.Center = new Vector2(
-                        (float) (hx + c*(host.Y - entity.Y)/l),
-                        (float) (hy + c*(entity.X - host.X)/l));
+                        (float)(hx + c * (host.Y - entity.Y) / l),
+                        (float)(hy + c * (entity.X - host.X) / l));
 
                     s.RemainingTime = period;
                     s.Acquired = true;
@@ -83,20 +83,20 @@ namespace gameserver.logic.behaviors
 
             double angle;
             if (host.Y == s.Center.Y && host.X == s.Center.X) //small offset
-                angle = Math.Atan2(host.Y - s.Center.Y + (Random.NextDouble()*2 - 1),
-                    host.X - s.Center.X + (Random.NextDouble()*2 - 1));
+                angle = Math.Atan2(host.Y - s.Center.Y + (Random.NextDouble() * 2 - 1),
+                    host.X - s.Center.X + (Random.NextDouble() * 2 - 1));
             else
                 angle = Math.Atan2(host.Y - s.Center.Y, host.X - s.Center.X);
 
-            double spd = host.GetSpeed(speed - (speed*2.5f/(time.TickCount / (time.TotalElapsedMs / 1000f))), time)*(s.Acquired ? 1 : 0.2);
-            double angularSpd = spd/radius;
+            double spd = host.GetSpeed(speed - (speed * 2.5f / (time.TickCount / (time.TotalElapsedMs / 1000f))), time) * (s.Acquired ? 1 : 0.2);
+            double angularSpd = spd / radius;
             angle += angularSpd;
 
-            double x = s.Center.X + Math.Cos(angle)*radius;
-            double y = s.Center.Y + Math.Sin(angle)*radius;
-            Vector2 vect = new Vector2((float) x, (float) y) - new Vector2(host.X, host.Y);
+            double x = s.Center.X + Math.Cos(angle) * radius;
+            double y = s.Center.Y + Math.Sin(angle) * radius;
+            Vector2 vect = new Vector2((float)x, (float)y) - new Vector2(host.X, host.Y);
             vect.Normalize();
-            vect *= (float) spd;
+            vect *= (float)spd;
 
             host.ValidateAndMove(host.X + vect.X, host.Y + vect.Y);
             host.UpdateCount++;

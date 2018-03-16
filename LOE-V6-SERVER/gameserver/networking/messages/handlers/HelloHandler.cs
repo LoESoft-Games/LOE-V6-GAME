@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Linq;
-using common;
+using core;
 using System.Text;
 using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
@@ -32,7 +32,7 @@ namespace gameserver.networking.handlers
                             FormatedJSONError(
                                 errorID: ErrorIDs.OUTDATED_CLIENT,
                                 labels: new[] { "{CLIENT_BUILD_VERSION}", "{SERVER_BUILD_VERSION}" },
-                                arguments: new [] { packet.BuildVersion, SERVER_VERSION }
+                                arguments: new[] { packet.BuildVersion, SERVER_VERSION }
                             )
                 });
                 client.Disconnect(DisconnectReason.OUTDATED_CLIENT);
@@ -62,7 +62,7 @@ namespace gameserver.networking.handlers
                 client.SendMessage(new FAILURE()
                 {
                     ErrorId = 8,
-                    ErrorDescription= 
+                    ErrorDescription =
                         JSONErrorIDHandler.
                             FormatedJSONError(
                                 errorID: ErrorIDs.DISABLE_GUEST_ACCOUNT,
@@ -83,7 +83,7 @@ namespace gameserver.networking.handlers
                 client.Disconnect(DisconnectReason.BAD_LOGIN);
             }
             client.ConnectedBuild = packet.BuildVersion;
-            Tuple<bool, ErrorIDs> TryConnect =  client.Manager.TryConnect(client);
+            Tuple<bool, ErrorIDs> TryConnect = client.Manager.TryConnect(client);
             if (!TryConnect.Item1)
             {
                 client.Account = null;
@@ -91,7 +91,7 @@ namespace gameserver.networking.handlers
                 string[] labels;
                 string[] arguments;
                 DisconnectReason type;
-                switch(TryConnect.Item2)
+                switch (TryConnect.Item2)
                 {
                     case ErrorIDs.SERVER_FULL:
                         {
@@ -145,10 +145,10 @@ namespace gameserver.networking.handlers
             }
             else
             {
-                if (packet.GameId == World.NEXUS_LIMBO) 
+                if (packet.GameId == World.NEXUS_LIMBO)
                     packet.GameId = World.NEXUS_ID;
                 World world = client.Manager.GetWorld(packet.GameId);
-                if (world == null && packet.GameId == World.TUT_ID) 
+                if (world == null && packet.GameId == World.TUT_ID)
                     world = client.Manager.AddWorld(new Tutorial(false));
                 if (!client.Manager.Database.AcquireLock(acc))
                 {

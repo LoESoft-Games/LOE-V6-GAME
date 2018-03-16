@@ -11,14 +11,14 @@
             Name = ObjectDesc.DisplayId ?? "";
             if (ObjectDesc.SizeStep != 0)
             {
-                int step = Random.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize)/ObjectDesc.SizeStep + 1)*
+                int step = Random.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize) / ObjectDesc.SizeStep + 1) *
                            ObjectDesc.SizeStep;
                 Size = ObjectDesc.MinSize + step;
             }
             else
                 Size = ObjectDesc.MinSize;
 
-            HP = (int) ObjectDesc.MaxHP;
+            HP = (int)ObjectDesc.MaxHP;
         }
 
         public wRandom Random { get; private set; }

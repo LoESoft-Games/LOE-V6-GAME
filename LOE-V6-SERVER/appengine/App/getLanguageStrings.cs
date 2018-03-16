@@ -1,9 +1,7 @@
 ﻿#region
 
-using common.config;
 using System.Collections.Generic;
-using System.Net;
-using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
 
 #endregion
@@ -12,12 +10,9 @@ namespace appengine.app
 {
     internal class getLanguageStrings : RequestHandler
     {
-        private static string appengine = Settings.NETWORKING.APPENGINE_URL;
-
         protected Dictionary<string, string> _ = new Dictionary<string, string>
         {
-            { "en", "english" },
-            { "test", "test" }
+            { "en", "english" }
         };
 
         protected override void HandleRequest()
@@ -28,22 +23,14 @@ namespace appengine.app
                 return;
 
             string language = null;
-            string data = null;
-
-            WebClient client = new WebClient();
+            string path = null;
 
             if (_.TryGetValue(_lt, out language))
-                data = client.DownloadString($"{appengine}/app/language/{language}.json");
+                path = language;
             else
-                data = client.DownloadString($"{appengine}/app/language/english.json");
+                path = "english";
 
-            string newData = Regex.Replace(data, @"\r\n?|\n", string.Empty);
-
-            byte[] response = Encoding.UTF8.GetBytes(newData);
-
-            Context.Response.OutputStream?.Write(response, 0, response.Length);
-
-            client.Dispose();
+            WriteLine(Regex.Replace(File.ReadAllText($"app/language/{path}.json"), @"\r\n?|\n", string.Empty), false);
         }
     }
 }

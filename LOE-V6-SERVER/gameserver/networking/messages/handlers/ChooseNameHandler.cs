@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using System.Linq;
 using gameserver.networking.incoming;
 using gameserver.networking.outgoing;

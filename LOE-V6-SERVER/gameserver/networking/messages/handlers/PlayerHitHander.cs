@@ -22,7 +22,7 @@ namespace gameserver.networking.handlers
 
             if (player.Owner == null)
                 return;
-            
+
             Entity enemy = player.Owner.GetEntity(packet.ObjectId);
 
             if (enemy == null)

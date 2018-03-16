@@ -26,19 +26,19 @@ namespace gameserver.realm.mapsetpiece
 
         private unsafe void FromWorldMap(Stream dat, void* world, IntPoint* pos, void* wmap)
         {
-	        Wmap map = (GCHandle.FromIntPtr(new IntPtr(wmap)).Target as Wmap);
-	        map.Load(dat, 0);
-	        int w = map.Width, h = map.Height;
+            Wmap map = (GCHandle.FromIntPtr(new IntPtr(wmap)).Target as Wmap);
+            map.Load(dat, 0);
+            int w = map.Width, h = map.Height;
 
-	        pos->X = ((GCHandle.FromIntPtr(new IntPtr(world)).Target as World).Map.Width / 2) - (w / 2);
-	        pos->Y = ((GCHandle.FromIntPtr(new IntPtr(world)).Target as World).Map.Width / 2) - (w / 2);
+            pos->X = ((GCHandle.FromIntPtr(new IntPtr(world)).Target as World).Map.Width / 2) - (w / 2);
+            pos->Y = ((GCHandle.FromIntPtr(new IntPtr(world)).Target as World).Map.Width / 2) - (w / 2);
 
             IEnumerable<Entity> ens = map.InstantiateEntities((GCHandle.FromIntPtr(new IntPtr(world)).Target as World).Manager);
 
             foreach (Entity i in ens)
-	        {
-		        i.Move(i.X + pos->X, i.Y + pos->Y);
-                (GCHandle.FromIntPtr(new IntPtr(world)).Target as World).EnterWorld(i);    
+            {
+                i.Move(i.X + pos->X, i.Y + pos->Y);
+                (GCHandle.FromIntPtr(new IntPtr(world)).Target as World).EnterWorld(i);
             }
         }
     }

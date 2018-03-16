@@ -2,7 +2,7 @@
 
 using System;
 using System.Linq;
-using common;
+using core;
 using gameserver.logic.loot;
 using gameserver.realm.entity;
 using gameserver.realm.terrain;
@@ -41,14 +41,14 @@ namespace gameserver.realm.mapsetpiece
             const double SCALE = 5.5;
             for (int x = 0; x < Size; x++) //Lava
             {
-                double t = (double) x/Size*Math.PI;
-                double y1 = t/Math.Sqrt(2) - 2*Math.Sin(t)/(SCALE*Math.Sqrt(2));
-                double y2 = t/Math.Sqrt(2) + Math.Sin(t)/(SCALE*Math.Sqrt(2));
-                y1 /= Math.PI/Math.Sqrt(2);
-                y2 /= Math.PI/Math.Sqrt(2);
+                double t = (double)x / Size * Math.PI;
+                double y1 = t / Math.Sqrt(2) - 2 * Math.Sin(t) / (SCALE * Math.Sqrt(2));
+                double y2 = t / Math.Sqrt(2) + Math.Sin(t) / (SCALE * Math.Sqrt(2));
+                y1 /= Math.PI / Math.Sqrt(2);
+                y2 /= Math.PI / Math.Sqrt(2);
 
-                int y1_ = (int) Math.Ceiling(y1*Size);
-                int y2_ = (int) Math.Floor(y2*Size);
+                int y1_ = (int)Math.Ceiling(y1 * Size);
+                int y2_ = (int)Math.Floor(y2 * Size);
                 for (int i = y1_; i < y2_; i++)
                     p[x, i] = 1;
             }
@@ -56,7 +56,7 @@ namespace gameserver.realm.mapsetpiece
             for (int x = 0; x < Size; x++) //Floor
                 for (int y = 0; y < Size; y++)
                 {
-                    if (p[x, y] == 1 && rand.Next()%5 == 0)
+                    if (p[x, y] == 1 && rand.Next() % 5 == 0)
                         p[x, y] = 2;
                 }
 

@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -30,12 +30,12 @@ namespace gameserver.networking.outgoing
 
         protected override void Write(NWriter wtr)
         {
-            wtr.Write((ushort) MyItems.Length);
+            wtr.Write((ushort)MyItems.Length);
             foreach (TradeItem i in MyItems)
                 i.Write(wtr);
 
             wtr.WriteUTF(YourName);
-            wtr.Write((ushort) YourItems.Length);
+            wtr.Write((ushort)YourItems.Length);
             foreach (TradeItem i in YourItems)
                 i.Write(wtr);
         }

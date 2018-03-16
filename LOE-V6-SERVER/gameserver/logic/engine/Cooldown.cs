@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 using System;
 
 #endregion
@@ -18,7 +18,7 @@ namespace gameserver.logic
             Variance = variance;
         }
 
-        public Cooldown Normalize() => CoolDown == 0 ? (int) (1000 + (1000*2.5/Settings.GAMESERVER.TICKETS_PER_SECOND)) : (int) (CoolDown + (CoolDown*2.5/Settings.GAMESERVER.TICKETS_PER_SECOND));
+        public Cooldown Normalize() => CoolDown == 0 ? (int)(1000 + (1000 * 2.5 / Settings.GAMESERVER.TICKETS_PER_SECOND)) : (int)(CoolDown + (CoolDown * 2.5 / Settings.GAMESERVER.TICKETS_PER_SECOND));
 
         public Cooldown Normalize(int def) => CoolDown == 0 ? def : this;
 

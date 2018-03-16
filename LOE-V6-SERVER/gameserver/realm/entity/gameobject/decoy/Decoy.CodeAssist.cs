@@ -16,10 +16,10 @@ namespace gameserver.realm.entity
 
         private Vector2 GetRandDirection()
         {
-            double angle = rand.NextDouble()*2*Math.PI;
+            double angle = rand.NextDouble() * 2 * Math.PI;
             return new Vector2(
-                (float) Math.Cos(angle),
-                (float) Math.Sin(angle)
+                (float)Math.Cos(angle),
+                (float)Math.Sin(angle)
                 );
         }
 

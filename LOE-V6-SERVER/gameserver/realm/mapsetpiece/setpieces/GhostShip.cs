@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using common;
+using core;
 
 #endregion
 
@@ -15,7 +15,7 @@ namespace gameserver.realm.mapsetpiece
         private static readonly string Tree = "Tree Jungle";
         private static readonly string Water = "GhostWater";
         private static readonly string Sand = "Ghost Water Beach";
-        
+
         Random rand = new Random();
         public override void RenderSetPiece(World world, IntPoint pos)
         {

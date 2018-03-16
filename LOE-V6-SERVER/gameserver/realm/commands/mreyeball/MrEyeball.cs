@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace gameserver.realm.commands.mreyeball
         {
             string callback;
             MrEyeball_PacketID packet = GetType(command) ? PacketID.FirstOrDefault(i => i.Value == command).Key : MrEyeball_PacketID.NOTHING;
-            switch(packet)
+            switch (packet)
             {
                 #region "Command: Uptime"
                 case MrEyeball_PacketID.UPTIME:
@@ -81,7 +81,7 @@ namespace gameserver.realm.commands.mreyeball
                 case MrEyeball_PacketID.MREYEBALL:
                 case MrEyeball_PacketID.NOTHING:
                 default: callback = $"Hi {player.Name}! Sorry, I don't understand. If you need help, then visit me at realmeye.com/mreyeball"; break;
-                #endregion
+                    #endregion
             }
             player.Client.SendMessage(new TEXT()
             {
@@ -96,7 +96,8 @@ namespace gameserver.realm.commands.mreyeball
                 TextColor = 0x123456,
                 NameColor = 0x123456
             });
-            player.Client.SendMessage(new TEXT() {
+            player.Client.SendMessage(new TEXT()
+            {
                 ObjectId = -1,
                 BubbleTime = 10,
                 Stars = 70,

@@ -138,16 +138,16 @@ namespace gameserver.logic
           )
           .Init("Cave Pirate Veteran",
               new State(
-				  new Shoot(projectileIndex: 0, coolDown: 1000),
+                  new Shoot(projectileIndex: 0, coolDown: 1000),
                   new Chase(speed: 0.8, range: 1),
                   new Wander(speed: 0.4)
                   ),
               new Drops(
-				  new ItemLoot("Health Potion", 0.03)
+                  new ItemLoot("Health Potion", 0.03)
                   )
           )
           .Init("Cave Pirate Moll",
-			  new State(
+              new State(
                   new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
@@ -156,42 +156,42 @@ namespace gameserver.logic
           )
           .Init("Cave Pirate Parrot",
               new State(
-				  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
+                  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
-				  new TierLoot(1, ItemType.Ability, 0.2)
+                  new TierLoot(1, ItemType.Ability, 0.2)
                   )
           )
           .Init("Cave Pirate Macaw",
               new State(
-				  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
+                  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
-				  new TierLoot(1, ItemType.Ability, 0.2)
+                  new TierLoot(1, ItemType.Ability, 0.2)
                   )
           )
           .Init("Cave Pirate Monkey",
               new State(
-				  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
+                  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
-				  new TierLoot(1, ItemType.Ability, 0.2)
+                  new TierLoot(1, ItemType.Ability, 0.2)
                   )
           )
           .Init("Cave Pirate Hunchback",
               new State(
-				  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
+                  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
-				  new TierLoot(1, ItemType.Ability, 0.2)
+                  new TierLoot(1, ItemType.Ability, 0.2)
                   )
           )
           .Init("Cave Pirate Cabin Boy",
               new State(
-				  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
+                  new Wander(speed: 0.4, avoidGround: true, ground: "Shallow Water")
                   ),
               new Drops(
-				  new TierLoot(1, ItemType.Ability, 0.2)
+                  new TierLoot(1, ItemType.Ability, 0.2)
                   )
           );
     }

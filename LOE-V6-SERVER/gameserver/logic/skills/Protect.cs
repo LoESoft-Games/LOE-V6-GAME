@@ -18,18 +18,18 @@ namespace gameserver.logic.behaviors
 
         public Protect(double speed, string protectee, double acquireRange = 12, double protectionRange = 4, double reprotectRange = 1)
         {
-            this.speed = (float) speed;
+            this.speed = (float)speed;
             this.protectee = BehaviorDb.InitGameData.IdToObjectType[protectee];
-            this.acquireRange = (float) acquireRange;
-            this.protectionRange = (float) protectionRange;
-            this.reprotectRange = (float) reprotectRange;
+            this.acquireRange = (float)acquireRange;
+            this.protectionRange = (float)protectionRange;
+            this.reprotectRange = (float)reprotectRange;
         }
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
             ProtectState s;
             if (state == null) s = ProtectState.DontKnowWhere;
-            else s = (ProtectState) state;
+            else s = (ProtectState)state;
 
             Status = CycleStatus.NotStarted;
 
@@ -58,7 +58,7 @@ namespace gameserver.logic.behaviors
                         Status = CycleStatus.InProgress;
                         vect.Normalize();
                         float dist = host.GetSpeed(speed, time);
-                        host.ValidateAndMove(host.X + vect.X*dist, host.Y + vect.Y*dist);
+                        host.ValidateAndMove(host.X + vect.X * dist, host.Y + vect.Y * dist);
                         host.UpdateCount++;
                     }
                     else

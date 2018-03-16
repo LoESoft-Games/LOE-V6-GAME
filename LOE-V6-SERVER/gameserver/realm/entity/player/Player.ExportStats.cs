@@ -99,7 +99,7 @@ namespace gameserver.realm.entity.player
             stats[StatsType.LootDropBoostTimer] = (int)LootDropBoostTimeLeft;
             stats[StatsType.LootTierBoostTimer] = (int)LootTierBoostTimeLeft;
 
-            stats[StatsType.AccountType] = (int) AccountType;
+            stats[StatsType.AccountType] = (int)AccountType;
             stats[StatsType.Admin] = Admin;
         }
     }

@@ -17,7 +17,7 @@ namespace gameserver.logic.behaviors
 
         public StayCloseToSpawn(double speed, int range = 5)
         {
-            this.speed = (float) speed;
+            this.speed = (float)speed;
             this.range = range;
         }
 
@@ -33,14 +33,14 @@ namespace gameserver.logic.behaviors
 
             if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed)) return;
 
-            Vector2 vect = (Vector2) state;
+            Vector2 vect = (Vector2)state;
             var l = (vect - new Vector2(host.X, host.Y)).Length;
             if (l > range)
             {
                 vect -= new Vector2(host.X, host.Y);
                 vect.Normalize();
-                float dist = host.GetSpeed(speed - (speed*2.5f/(time.TickCount / (time.TotalElapsedMs / 1000f))), time);
-                host.ValidateAndMove(host.X + vect.X*dist, host.Y + vect.Y*dist);
+                float dist = host.GetSpeed(speed - (speed * 2.5f / (time.TickCount / (time.TotalElapsedMs / 1000f))), time);
+                host.ValidateAndMove(host.X + vect.X * dist, host.Y + vect.Y * dist);
                 host.UpdateCount++;
 
                 Status = CycleStatus.InProgress;

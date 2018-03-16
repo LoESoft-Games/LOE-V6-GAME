@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using common;
+using core;
 using gameserver.networking.outgoing;
 using gameserver.realm.entity.player;
 using gameserver.realm.world;

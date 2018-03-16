@@ -22,12 +22,12 @@ namespace gameserver.logic.behaviors
         public Orbit(double speed, double radius, double acquireRange = 10,
             string target = null, double? speedVariance = null, double? radiusVariance = null)
         {
-            this.speed = (float) speed;
-            this.radius = (float) radius;
-            this.acquireRange = (float) acquireRange;
-            this.target = target == null ? null : (ushort?) BehaviorDb.InitGameData.IdToObjectType[target];
-            this.speedVariance = (float) (speedVariance ?? speed*0.1);
-            this.radiusVariance = (float) (radiusVariance ?? speed*0.1);
+            this.speed = (float)speed;
+            this.radius = (float)radius;
+            this.acquireRange = (float)acquireRange;
+            this.target = target == null ? null : (ushort?)BehaviorDb.InitGameData.IdToObjectType[target];
+            this.speedVariance = (float)(speedVariance ?? speed * 0.1);
+            this.radiusVariance = (float)(radiusVariance ?? speed * 0.1);
             Random rnd = new Random();
             _ = rnd.Next(0, 1);
         }
@@ -36,14 +36,14 @@ namespace gameserver.logic.behaviors
         {
             state = new OrbitState
             {
-                Speed = (speed - (speed*2.5f/(time.TickCount / (time.TotalElapsedMs / 1000f))) + speedVariance*(float) (Random.NextDouble()*2 - 1)),
-                Radius = radius + radiusVariance*(float) (Random.NextDouble()*2 - 1)
+                Speed = (speed - (speed * 2.5f / (time.TickCount / (time.TotalElapsedMs / 1000f))) + speedVariance * (float)(Random.NextDouble() * 2 - 1)),
+                Radius = radius + radiusVariance * (float)(Random.NextDouble() * 2 - 1)
             };
         }
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
-            OrbitState s = (OrbitState) state;
+            OrbitState s = (OrbitState)state;
 
             Status = CycleStatus.NotStarted;
 
@@ -55,18 +55,18 @@ namespace gameserver.logic.behaviors
             {
                 double angle;
                 if (host.Y == entity.Y && host.X == entity.X)
-                    angle = Math.Atan2(host.Y - entity.Y + (Random.NextDouble()*2 - 1), host.X - entity.X + (Random.NextDouble()*2 - 1));
+                    angle = Math.Atan2(host.Y - entity.Y + (Random.NextDouble() * 2 - 1), host.X - entity.X + (Random.NextDouble() * 2 - 1));
                 else
                     angle = Math.Atan2(host.Y - entity.Y, host.X - entity.X);
 
-                float angularSpd = host.GetSpeed(s.Speed, time)/s.Radius;
-                
+                float angularSpd = host.GetSpeed(s.Speed, time) / s.Radius;
+
                 angle += angularSpd;
 
-                double x = entity.X + (_ == 0 ? Math.Cos(angle)*radius : Math.Sin(angle)*radius);
-                double y = entity.Y + (_ == 0 ? Math.Sin(angle)*radius : Math.Cos(angle)*radius);
+                double x = entity.X + (_ == 0 ? Math.Cos(angle) * radius : Math.Sin(angle) * radius);
+                double y = entity.Y + (_ == 0 ? Math.Sin(angle) * radius : Math.Cos(angle) * radius);
 
-                Vector2 vect = new Vector2((float) x, (float) y) - new Vector2(host.X, host.Y);
+                Vector2 vect = new Vector2((float)x, (float)y) - new Vector2(host.X, host.Y);
 
                 vect.Normalize();
                 vect *= host.GetSpeed(s.Speed, time);

@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using terrain;
 using gameserver.realm.terrain;
 
@@ -29,8 +29,8 @@ namespace gameserver.realm.mapsetpiece
             for (int x = 0; x < 33; x++) //Grassing
                 for (int y = 0; y < 33; y++)
                 {
-                    if (Math.Abs(x - Size/2)/(Size/2.0) + rand.NextDouble()*0.3 < 0.95 &&
-                        Math.Abs(y - Size/2)/(Size/2.0) + rand.NextDouble()*0.3 < 0.95)
+                    if (Math.Abs(x - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.95 &&
+                        Math.Abs(y - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.95)
                         t[x, y] = 1;
                 }
 
@@ -60,17 +60,17 @@ namespace gameserver.realm.mapsetpiece
 
             for (int i = 0; i < 4; i++) //Pillars
             {
-                t[13, 7] = rand.Next()%3 == 0 ? 6 : 5;
-                t[19, 7] = rand.Next()%3 == 0 ? 6 : 5;
-                t[13, 10] = rand.Next()%3 == 0 ? 6 : 5;
-                t[19, 10] = rand.Next()%3 == 0 ? 6 : 5;
+                t[13, 7] = rand.Next() % 3 == 0 ? 6 : 5;
+                t[19, 7] = rand.Next() % 3 == 0 ? 6 : 5;
+                t[13, 10] = rand.Next() % 3 == 0 ? 6 : 5;
+                t[19, 10] = rand.Next() % 3 == 0 ? 6 : 5;
                 t = SetPieces.rotateCW(t);
             }
 
             Noise noise = new Noise(Environment.TickCount); //Perlin noise
             for (int x = 0; x < 33; x++)
                 for (int y = 0; y < 33; y++)
-                    if (noise.GetNoise(x/33f*8, y/33f*8, .5f) < 0.2)
+                    if (noise.GetNoise(x / 33f * 8, y / 33f * 8, .5f) < 0.2)
                         t[x, y] = 0;
 
             EmbeddedData dat = world.Manager.GameData;
@@ -124,7 +124,7 @@ namespace gameserver.realm.mapsetpiece
                 }
 
             Entity skull = Entity.Resolve(world.Manager, "Skull Shrine"); //Skulls!
-            skull.Move(pos.X + Size/2f, pos.Y + Size/2f);
+            skull.Move(pos.X + Size / 2f, pos.Y + Size / 2f);
             world.EnterWorld(skull);
         }
     }

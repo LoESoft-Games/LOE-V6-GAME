@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using common;
+using core;
 using gameserver.logic.loot;
 using gameserver.realm.entity;
 using gameserver.realm.terrain;
@@ -47,9 +47,9 @@ namespace gameserver.realm.mapsetpiece
             for (int y = 0; y < Size; y++) //Outer
                 for (int x = 0; x < Size; x++)
                 {
-                    double dx = x - (Size/2.0);
-                    double dy = y - (Size/2.0);
-                    double r = Math.Sqrt(dx*dx + dy*dy);
+                    double dx = x - (Size / 2.0);
+                    double dy = y - (Size / 2.0);
+                    double r = Math.Sqrt(dx * dx + dy * dy);
                     if (r <= outerRadius)
                         t[x, y] = 1;
                 }
@@ -57,9 +57,9 @@ namespace gameserver.realm.mapsetpiece
             for (int y = 0; y < Size; y++) //Water
                 for (int x = 0; x < Size; x++)
                 {
-                    double dx = x - (Size/2.0);
-                    double dy = y - (Size/2.0);
-                    double r = Math.Sqrt(dx*dx + dy*dy);
+                    double dx = x - (Size / 2.0);
+                    double dy = y - (Size / 2.0);
+                    double r = Math.Sqrt(dx * dx + dy * dy);
                     if (r <= waterRadius)
                     {
                         t[x, y] = 2;
@@ -71,9 +71,9 @@ namespace gameserver.realm.mapsetpiece
             for (int y = 0; y < Size; y++) //Island
                 for (int x = 0; x < Size; x++)
                 {
-                    double dx = x - (Size/2.0);
-                    double dy = y - (Size/2.0);
-                    double r = Math.Sqrt(dx*dx + dy*dy);
+                    double dx = x - (Size / 2.0);
+                    double dy = y - (Size / 2.0);
+                    double r = Math.Sqrt(dx * dx + dy * dy);
                     if (r <= islandRadius)
                     {
                         t[x, y] = 1;
@@ -83,7 +83,7 @@ namespace gameserver.realm.mapsetpiece
                 }
 
             HashSet<IntPoint> trees = new HashSet<IntPoint>();
-            while (trees.Count < border.Count*0.5)
+            while (trees.Count < border.Count * 0.5)
                 trees.Add(border[rand.Next(0, border.Count)]);
 
             foreach (IntPoint i in trees)
@@ -112,7 +112,7 @@ namespace gameserver.realm.mapsetpiece
                         WmapTile tile = world.Map[x + pos.X, y + pos.Y].Clone();
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
-                        tile.Name = "size:" + (rand.Next()%2 == 0 ? 120 : 140);
+                        tile.Name = "size:" + (rand.Next() % 2 == 0 ? 120 : 140);
                         if (tile.ObjId == 0) tile.ObjId = world.GetNextEntityId();
                         world.Map[x + pos.X, y + pos.Y] = tile;
                     }

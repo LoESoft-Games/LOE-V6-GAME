@@ -1,7 +1,7 @@
 ﻿#region
 
-using common;
-using common.config;
+using core;
+using core.config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -614,7 +614,7 @@ namespace appengine
 
     internal class ItemCosts
     {
-        
+
         public static XElement ToXml()
         {
             purchaseSkin x = new purchaseSkin();

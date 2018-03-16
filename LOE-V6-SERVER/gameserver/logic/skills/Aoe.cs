@@ -17,7 +17,7 @@ namespace gameserver.logic.behaviors
         private readonly bool players;
         private readonly int minDamage;
         private readonly int maxDamage;
-        private readonly bool noDef; 
+        private readonly bool noDef;
         private readonly ARGB color;
 
         public Aoe(double radius, bool players, int minDamage, int maxDamage, bool noDef, uint color)

@@ -21,28 +21,28 @@ namespace gameserver.realm.entity
         private int t;
 
         public Trap(Player player, float radius, int dmg, ConditionEffectIndex eff, float effDuration)
-            : base(player.Manager, 0x0711, LIFETIME*1000, true, true, false)
+            : base(player.Manager, 0x0711, LIFETIME * 1000, true, true, false)
         {
             this.player = player;
             this.radius = radius;
             this.dmg = dmg;
             effect = eff;
-            duration = (int) (effDuration*1000);
+            duration = (int)(effDuration * 1000);
         }
 
         public override void Tick(RealmTime time)
         {
-            if (t/500 == p)
+            if (t / 500 == p)
             {
                 Owner.BroadcastPacket(new SHOWEFFECT
                 {
                     EffectType = EffectType.Ring,
                     Color = new ARGB(0xff9000ff),
                     TargetId = Id,
-                    PosA = new Position {X = radius/2}
+                    PosA = new Position { X = radius / 2 }
                 }, null);
                 p++;
-                if (p == LIFETIME*2)
+                if (p == LIFETIME * 2)
                 {
                     Explode(time);
                     return;
@@ -51,7 +51,7 @@ namespace gameserver.realm.entity
             t += time.ElapsedMsDelta;
 
             bool monsterNearby = false;
-            this.Aoe(radius/2, false, enemy => monsterNearby = true);
+            this.Aoe(radius / 2, false, enemy => monsterNearby = true);
             if (monsterNearby)
                 Explode(time);
 
@@ -65,7 +65,7 @@ namespace gameserver.realm.entity
                 EffectType = EffectType.Nova,
                 Color = new ARGB(0xff9000ff),
                 TargetId = Id,
-                PosA = new Position {X = radius}
+                PosA = new Position { X = radius }
             }, null);
             this.Aoe(radius, false, enemy =>
             {

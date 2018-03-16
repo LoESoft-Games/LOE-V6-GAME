@@ -38,7 +38,7 @@ namespace gameserver.realm.world
 
         public override void LeaveWorld(Entity entity)
         {
-            if(entity is Player)
+            if (entity is Player)
                 (entity as Player).Client.SendMessage(new GLOBAL_NOTIFICATION
                 {
                     Text = "showKeyUI",

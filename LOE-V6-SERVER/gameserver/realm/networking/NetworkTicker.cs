@@ -20,7 +20,7 @@ namespace gameserver.realm
     {
         private static readonly ConcurrentQueue<Work> pendings = new ConcurrentQueue<Work>();
         private static SpinWait loopLock = new SpinWait();
-        private readonly ILog log = LogManager.GetLogger(typeof (NetworkTicker));
+        private readonly ILog log = LogManager.GetLogger(typeof(NetworkTicker));
 
         public NetworkTicker(RealmManager manager)
         {
@@ -30,7 +30,7 @@ namespace gameserver.realm
         public RealmManager Manager { get; private set; }
 
         public void AddPendingPacket(Client parrent, Message pkt) => pendings.Enqueue(new Work(parrent, pkt));
-        
+
         public void TickLoop()
         {
             log.Info("Network loop started.");

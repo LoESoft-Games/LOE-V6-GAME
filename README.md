@@ -1,10 +1,22 @@
-# LOE-V6
-LoE Realm version 6 production client /server source code project.
+# LOE-V6 (Community Open Source Project)
+LoE Realm version 6 production client / server community open source code project.
 
-# Adobe Flex SDK 4.9.1
-https://drive.google.com/uc?id=0B9pmoNsaxaKxQlh6MloycXZKazQ&export=download
+# Discord:
+- [![Join Us!](https://discordapp.com/api/guilds/345060662260531202/embed.png)](https://discord.gg/jHNTjun)
 
-**Note:** this source files does not contains any latest update from most recent version, but project is more stable than LoE v4.
+# AppEngine (read-only) Repository for remote data:
+- https://loesoft-games.github.io/
 
-## Credits
+# Requirements:
+## Microsoft Visual Studio
+Download the Microsoft Visual Studio IDE to compile game server, link bellow:
+- https://www.visualstudio.com/downloads/
+
+## Adobe Flex SDK 4.9.1
+Download the properly Adobe Flex SDK to compile game client, link bellow:
+- https://drive.google.com/uc?id=0B9pmoNsaxaKxQlh6MloycXZKazQ&export=download
+
+**Note:** this project doesn't follow any update of LoE v6 by LoESoft Games.
+
+### Credits
 - LoESoft Games

@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using gameserver.realm.entity;
 using gameserver.realm.terrain;
 
@@ -46,9 +46,9 @@ namespace gameserver.realm.mapsetpiece
             for (int x = 0; x < Size; x++) //Flooring
                 for (int y = 0; y < Size; y++)
                 {
-                    double dx = x - (Size/2.0);
-                    double dy = y - (Size/2.0);
-                    double r = Math.Sqrt(dx*dx + dy*dy) + rand.NextDouble()*4 - 2;
+                    double dx = x - (Size / 2.0);
+                    double dy = y - (Size / 2.0);
+                    double r = Math.Sqrt(dx * dx + dy * dy) + rand.NextDouble() * 4 - 2;
                     if (r <= 35)
                         t[x, y] = 1;
                 }

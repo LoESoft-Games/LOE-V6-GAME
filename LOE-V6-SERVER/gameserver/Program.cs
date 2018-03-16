@@ -4,12 +4,12 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Threading;
-using common;
+using core;
 using log4net;
 using log4net.Config;
 using gameserver.networking;
 using gameserver.realm;
-using common.config;
+using core.config;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using gameserver.realm.commands.mreyeball;
@@ -28,7 +28,7 @@ namespace gameserver
 
         public static int Usage { get; private set; }
         public static bool autoRestart { get; private set; }
-        
+
         public static ChatManager chat { get; set; }
 
         private static RealmManager manager;
@@ -43,7 +43,7 @@ namespace gameserver
 
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Thread.CurrentThread.Name = "Entry";
-                
+
             using (var db = new Database())
             {
                 Usage = -1;
@@ -80,7 +80,7 @@ namespace gameserver
                     Shutdown?.Set();
                 };
 
-                while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+                while (Console.ReadKey(true).Key != ConsoleKey.Escape) ;
 
                 Logger.Info("Terminating...");
                 server?.Stop();
@@ -139,7 +139,8 @@ namespace gameserver
                     {
                         foreach (Client j in manager.Clients.Values)
                             chat.Tell(j?.Player, MrEyeball_Dictionary.BOT_NAME, ("Hey (PLAYER_NAME), prepare to disconnect." + message).Replace("(PLAYER_NAME)", j?.Player.Name));
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         ForceShutdown(ex);
                     }
@@ -152,7 +153,8 @@ namespace gameserver
                 {
                     foreach (Client k in manager.Clients.Values)
                         chat.Tell(k?.Player, MrEyeball_Dictionary.BOT_NAME, message);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     ForceShutdown(ex);
                 }
@@ -161,7 +163,8 @@ namespace gameserver
                 {
                     foreach (Client clients in manager.Clients.Values)
                         clients?.Disconnect(DisconnectReason.RESTART);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     ForceShutdown(ex);
                 }

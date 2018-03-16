@@ -24,7 +24,7 @@ namespace gameserver.logic.behaviors
             foreach (Entity e in ens)
                 if (e.ObjectType == host.Manager.GameData.IdToObjectType[children])
                     host.Owner.LeaveWorld(e);
-        } 
+        }
 
         protected override void TickCore(Entity host, RealmTime time, ref object state) { }
     }

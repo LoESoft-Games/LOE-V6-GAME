@@ -17,7 +17,7 @@ namespace gameserver.logic.behaviors
 
         public Charge(double speed = 4, float range = 10, Cooldown coolDown = new Cooldown())
         {
-            this.speed = (float) speed;
+            this.speed = (float)speed;
             this.range = range;
             this.coolDown = coolDown.Normalize(2000);
         }
@@ -26,7 +26,7 @@ namespace gameserver.logic.behaviors
         {
             ChargeState s;
             if (state == null) s = new ChargeState();
-            else s = (ChargeState) state;
+            else s = (ChargeState)state;
 
             Status = CycleStatus.NotStarted;
 
@@ -36,15 +36,15 @@ namespace gameserver.logic.behaviors
             {
                 if (s.Direction == Vector2.Zero)
                 {
-                    var player = (Player) host.GetNearestEntity(range, null);
+                    var player = (Player)host.GetNearestEntity(range, null);
                     if (player != null && player.X != host.X && player.Y != host.Y)
                     {
                         s.Direction = new Vector2(player.X - host.X, player.Y - host.Y);
                         float d = s.Direction.Length;
                         s.Direction.Normalize();
                         s.RemainingTime = coolDown.Next(Random);
-                        if (d/host.GetSpeed(speed, time) < s.RemainingTime)
-                            s.RemainingTime = (int) (d/host.GetSpeed(speed, time));
+                        if (d / host.GetSpeed(speed, time) < s.RemainingTime)
+                            s.RemainingTime = (int)(d / host.GetSpeed(speed, time));
                         Status = CycleStatus.InProgress;
                     }
                 }
@@ -58,7 +58,7 @@ namespace gameserver.logic.behaviors
             if (s.Direction != Vector2.Zero)
             {
                 float dist = host.GetSpeed(speed, time);
-                host.ValidateAndMove(host.X + s.Direction.X*dist, host.Y + s.Direction.Y*dist);
+                host.ValidateAndMove(host.X + s.Direction.X * dist, host.Y + s.Direction.Y * dist);
                 host.UpdateCount++;
                 Status = CycleStatus.InProgress;
             }

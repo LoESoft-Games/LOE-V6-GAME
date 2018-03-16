@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using appengine.mysterybox;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace appengine.account
                     }
 
                     SerializeMiniGames box = SerializeMiniGames.GetBox(int.Parse(Query["boxId"]), CONSTANTS.MYSTERY_BOX);
-                    
+
                     if (box == null)
                     {
                         WriteLine($"<Error>Box ID {Query["boxId"]} not found.</Error>");
@@ -170,7 +170,7 @@ namespace appengine.account
                         giftsList.Add(item);
 
                     acc.Gifts = giftsList.ToArray();
-                    
+
                     acc.Flush();
                     acc.Reload();
                 }
@@ -195,7 +195,7 @@ namespace appengine.account
             XmlDocument doc = new XmlDocument();
             XmlNode success = doc.CreateElement("Success");
             doc.AppendChild(success);
-            
+
             XmlNode awards = doc.CreateElement("Awards");
             awards.InnerText = res.Awards.Replace(" ", string.Empty);
             success.AppendChild(awards);

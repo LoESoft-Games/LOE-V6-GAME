@@ -10,7 +10,7 @@ using gameserver.networking.outgoing;
 using gameserver.realm.entity.player;
 using gameserver.realm.mapsetpiece;
 using gameserver.realm.world;
-using common.config;
+using core.config;
 using static gameserver.networking.Client;
 
 #endregion
@@ -19,7 +19,7 @@ namespace gameserver.realm.commands
 {
     internal class TestCommand : Command
     {
-        public TestCommand() : base("test", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public TestCommand() : base("test", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -33,7 +33,7 @@ namespace gameserver.realm.commands
 
     internal class posCmd : Command
     {
-        public posCmd() : base("p", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public posCmd() : base("p", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -44,7 +44,7 @@ namespace gameserver.realm.commands
 
     internal class AddRealmCommand : Command
     {
-        public AddRealmCommand() : base("addrealm", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public AddRealmCommand() : base("addrealm", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -56,11 +56,12 @@ namespace gameserver.realm.commands
 
     internal class SpawnCommand : Command
     {
-        public SpawnCommand() : base("spawn", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public SpawnCommand() : base("spawn", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            if (player.Owner.Name != "Nexus") {
+            if (player.Owner.Name != "Nexus")
+            {
                 int num;
                 if (args.Length > 0 && int.TryParse(args[0], out num)) //multi
                 {
@@ -112,7 +113,8 @@ namespace gameserver.realm.commands
                     entity.Move(player.X, player.Y);
                     player.Owner.EnterWorld(entity);
                 }
-            } else
+            }
+            else
             {
                 player.SendInfo("You cannot spawn in Nexus.");
                 return false;
@@ -123,7 +125,7 @@ namespace gameserver.realm.commands
 
     internal class AddEffCommand : Command
     {
-        public AddEffCommand() : base("addeff", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public AddEffCommand() : base("addeff", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -154,7 +156,7 @@ namespace gameserver.realm.commands
 
     internal class RemoveEffCommand : Command
     {
-        public RemoveEffCommand() : base("remeff", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public RemoveEffCommand() : base("remeff", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -225,7 +227,7 @@ namespace gameserver.realm.commands
 
     internal class TpCommand : Command
     {
-        public TpCommand() : base("tp", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public TpCommand() : base("tp", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -264,8 +266,8 @@ namespace gameserver.realm.commands
 
     class KillAll : Command
     {
-        public KillAll() : base("killAll", (int) AccountType.ULTIMATE_ACCOUNT) { }
-        
+        public KillAll() : base("killAll", (int)AccountType.ULTIMATE_ACCOUNT) { }
+
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
             var iterations = 0;
@@ -293,7 +295,7 @@ namespace gameserver.realm.commands
 
     internal class Kick : Command
     {
-        public Kick() : base("kick", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public Kick() : base("kick", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -324,7 +326,7 @@ namespace gameserver.realm.commands
 
     internal class Max : Command
     {
-        public Max() : base("max", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public Max() : base("max", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -353,7 +355,7 @@ namespace gameserver.realm.commands
 
     internal class OryxSay : Command
     {
-        public OryxSay() : base("osay", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public OryxSay() : base("osay", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -370,7 +372,7 @@ namespace gameserver.realm.commands
 
     internal class OnlineCommand : Command //get all players from all worlds (this may become too large!)
     {
-        public OnlineCommand() : base("online", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public OnlineCommand() : base("online", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -401,7 +403,7 @@ namespace gameserver.realm.commands
 
     internal class Announcement : Command
     {
-        public Announcement() : base("announce", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public Announcement() : base("announce", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -430,7 +432,7 @@ namespace gameserver.realm.commands
 
     internal class KillPlayerCommand : Command
     {
-        public KillPlayerCommand() : base("kill", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public KillPlayerCommand() : base("kill", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -451,7 +453,7 @@ namespace gameserver.realm.commands
 
     internal class RestartCommand : Command
     {
-        public RestartCommand() : base("restart", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public RestartCommand() : base("restart", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -485,7 +487,7 @@ namespace gameserver.realm.commands
 
     internal class TqCommand : Command
     {
-        public TqCommand() : base("tq", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public TqCommand() : base("tq", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -512,7 +514,7 @@ namespace gameserver.realm.commands
 
     internal class LevelCommand : Command
     {
-        public LevelCommand() : base("level", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public LevelCommand() : base("level", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -543,7 +545,7 @@ namespace gameserver.realm.commands
 
     internal class SetCommand : Command
     {
-        public SetCommand() : base("setStat", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public SetCommand() : base("setStat", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -684,7 +686,7 @@ namespace gameserver.realm.commands
 
     internal class SetpieceCommand : Command
     {
-        public SetpieceCommand() : base("setpiece", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public SetpieceCommand() : base("setpiece", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -706,7 +708,7 @@ namespace gameserver.realm.commands
 
     internal class ListCommands : Command
     {
-        public ListCommands() : base("commands", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public ListCommands() : base("commands", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
@@ -733,64 +735,64 @@ namespace gameserver.realm.commands
 
     internal class Mute : Command
     {
-    	public Mute() : base("mute", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public Mute() : base("mute", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
-    	protected override bool Process(Player player, RealmTime time, string[] args)
-    	{
-    		try
-    		{
-    			foreach (KeyValuePair<int, Player> i in player.Owner.Players)
-    			{
-    				if (i.Value.Name.ToLower() == args[0].ToLower().Trim())
-    				{
-    					i.Value.Muted = true;
+        protected override bool Process(Player player, RealmTime time, string[] args)
+        {
+            try
+            {
+                foreach (KeyValuePair<int, Player> i in player.Owner.Players)
+                {
+                    if (i.Value.Name.ToLower() == args[0].ToLower().Trim())
+                    {
+                        i.Value.Muted = true;
                         i.Value.Client.Manager.Database.MuteAccount(i.Value.Client.Account);
-    					player.SendInfo("Player Muted.");
-    				}
-    			}
-    		}
-    		catch
-    		{
-    			player.SendError("Cannot mute!");
-    			return false;
-    		}
-    		return true;
-    	}
+                        player.SendInfo("Player Muted.");
+                    }
+                }
+            }
+            catch
+            {
+                player.SendError("Cannot mute!");
+                return false;
+            }
+            return true;
+        }
     }
 
     internal class Unmute : Command
     {
-    	public Unmute() : base("unmute", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public Unmute() : base("unmute", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
-    	protected override bool Process(Player player, RealmTime time, string[] args)
-    	{
-    		try
-    		{
-    			foreach (KeyValuePair<int, Player> i in player.Owner.Players)
-    			{
-    				if (i.Value.Name.ToLower() == args[0].ToLower().Trim())
-    				{
+        protected override bool Process(Player player, RealmTime time, string[] args)
+        {
+            try
+            {
+                foreach (KeyValuePair<int, Player> i in player.Owner.Players)
+                {
+                    if (i.Value.Name.ToLower() == args[0].ToLower().Trim())
+                    {
                         i.Value.Muted = false;
                         i.Value.Client.Manager.Database.UnmuteAccount(i.Value.Client.Account);
-    					player.SendInfo("Player Unmuted.");
-    				}
-    			}
-    		}
-    		catch
-    		{
-    			player.SendError("Cannot unmute!");
-    			return false;
-    		}
-    		return true;
-    	}
+                        player.SendInfo("Player Unmuted.");
+                    }
+                }
+            }
+            catch
+            {
+                player.SendError("Cannot unmute!");
+                return false;
+            }
+            return true;
+        }
     }
 
     internal class BanCommand : Command
     {
-    	public BanCommand() : base("ban", (int) AccountType.ULTIMATE_ACCOUNT) { }
+        public BanCommand() : base("ban", (int)AccountType.ULTIMATE_ACCOUNT) { }
 
-    	protected override bool Process(Player player, RealmTime time, string[] args)
-    	{
+        protected override bool Process(Player player, RealmTime time, string[] args)
+        {
             try
             {
                 Player p = player.Manager.FindPlayer(args[0]);
@@ -808,6 +810,6 @@ namespace gameserver.realm.commands
                 player.SendError("Cannot ban!");
                 return false;
             }
-    	}
+        }
     }
 }

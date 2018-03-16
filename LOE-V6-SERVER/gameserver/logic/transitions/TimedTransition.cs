@@ -24,7 +24,7 @@ namespace gameserver.logic.transitions
         {
             int cool;
             if (state == null) cool = randomized ? Random.Next(this.time) : this.time;
-            else cool = (int) state;
+            else cool = (int)state;
 
             bool ret = false;
             if (cool <= 0)

@@ -49,6 +49,7 @@ local.properties
 
 # Build results
 
+bin-server/
 [Dd]ebug/
 [Rr]elease/
 x64/

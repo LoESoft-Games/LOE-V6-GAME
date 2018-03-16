@@ -120,7 +120,7 @@ namespace gameserver.realm
 
         public void AcceptTrade(Player sender, ACCEPTTRADE pkt)
         {
-            if(sender == player1)
+            if (sender == player1)
             {
                 if (pkt.MyOffers.SequenceEqual(player1Trades) && pkt.YourOffers.SequenceEqual(player2Trades))
                 {

@@ -29,7 +29,7 @@ namespace gameserver.logic.behaviors
         public Taunt(double probability, params string[] text)
         {
             this.text = text;
-            this.probability = (float) probability;
+            this.probability = (float)probability;
         }
 
         public Taunt(bool broadcast, params string[] text)
@@ -47,14 +47,14 @@ namespace gameserver.logic.behaviors
         public Taunt(double probability, bool broadcast, params string[] text)
         {
             this.text = text;
-            this.probability = (float) probability;
+            this.probability = (float)probability;
             this.broadcast = broadcast;
         }
 
         public Taunt(double probability, Cooldown cooldown, params string[] text)
         {
             this.text = text;
-            this.probability = (float) probability;
+            this.probability = (float)probability;
             this.cooldown = cooldown;
         }
 
@@ -68,7 +68,7 @@ namespace gameserver.logic.behaviors
         public Taunt(double probability, bool broadcast, Cooldown cooldown, params string[] text)
         {
             this.text = text;
-            this.probability = (float) probability;
+            this.probability = (float)probability;
             this.broadcast = broadcast;
             this.cooldown = cooldown;
         }
@@ -93,7 +93,7 @@ namespace gameserver.logic.behaviors
 
             int c;
             if (state == null) c = cooldown.Next(Random);
-            else c = (int) state;
+            else c = (int)state;
 
             c -= time.ElapsedMsDelta;
             state = c;

@@ -1,7 +1,6 @@
 ﻿#region
 
-using common;
-using common.config;
+using core;
 using log4net;
 using System;
 using System.Collections.Concurrent;

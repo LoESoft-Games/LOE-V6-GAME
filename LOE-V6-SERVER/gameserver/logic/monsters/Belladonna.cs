@@ -63,10 +63,10 @@ namespace gameserver.logic
                             new Shoot(10, count: 6, projectileIndex: 2, fixedAngle: 0),
                             new Timed(200, new Shoot(10, count: 2, shootAngle: 30, defaultAngle: 45, projectileIndex: 3)),
                             new Timed(200, new Shoot(10, count: 2, shootAngle: 30, defaultAngle: 135, projectileIndex: 3)),
-                            new HpLessTransition(.5 , "StartTheFun"),
+                            new HpLessTransition(.5, "StartTheFun"),
                             new TimedTransition(3000, "Ring")
                         )
-                       
+
 
                     ),
                     new State("StartTheFun",

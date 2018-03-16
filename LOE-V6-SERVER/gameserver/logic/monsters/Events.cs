@@ -11,7 +11,7 @@ namespace gameserver.logic
     partial class BehaviorDb
     {
         private _ Events = () => Behav()
-            #region Skull Shrine
+        #region Skull Shrine
 
             .Init("Skull Shrine",
                 new State(
@@ -60,9 +60,9 @@ namespace gameserver.logic
                     new Shoot(15, 2, 5, 0, predictive: 1, coolDown: 750)
                     )
             )
-            #endregion
+        #endregion
 
-            #region Hermit God
+        #region Hermit God
 
             .Init("Hermit God",
                 new State(
@@ -187,6 +187,6 @@ namespace gameserver.logic
                     new ItemLoot("Helm of the Juggernaut", 0.005)
                 )
             );
-            #endregion
+        #endregion
     }
 }

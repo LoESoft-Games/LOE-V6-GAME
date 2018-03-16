@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using gameserver.realm.terrain;
 
 #endregion
@@ -50,7 +50,7 @@ namespace gameserver.realm.mapsetpiece
         {
             int[,] t = new int[27, 27];
 
-            int[,] q = (int[,]) quarter.Clone();
+            int[,] q = (int[,])quarter.Clone();
 
             for (int y = 0; y < 14; y++) //Top left
                 for (int x = 0; x < 14; x++)

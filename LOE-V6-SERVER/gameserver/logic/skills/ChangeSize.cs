@@ -26,7 +26,7 @@ namespace gameserver.logic.behaviors
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
-            var cool = (int) state;
+            var cool = (int)state;
 
             if (cool <= 0)
             {

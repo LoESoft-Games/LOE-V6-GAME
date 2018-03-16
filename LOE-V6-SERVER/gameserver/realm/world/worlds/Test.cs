@@ -32,7 +32,7 @@ namespace gameserver.realm.world
 
             foreach (KeyValuePair<int, Player> i in Players)
             {
-                if (i.Value.Client.Account.AccType != common.config.AccountType.ULTIMATE_ACCOUNT || !i.Value.Client.Account.Admin)
+                if (i.Value.Client.Account.AccType != core.config.AccountType.ULTIMATE_ACCOUNT || !i.Value.Client.Account.Admin)
                 {
                     i.Value.SendError(string.Format("[Admin: {0}] You cannot access Test world with rank {1}.", i.Value.Client.Account.Admin ? "true" : "false", i.Value.Client.Account.Rank));
                     i.Value.Client.Disconnect(DisconnectReason.ACCESS_DENIED);

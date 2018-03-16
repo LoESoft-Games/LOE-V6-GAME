@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using gameserver.realm;
-using common;
+using core;
 
 #endregion
 
@@ -20,7 +20,7 @@ namespace gameserver
             BitmapData ret = new BitmapData();
             ret.Width = rdr.ReadInt32();
             ret.Height = rdr.ReadInt32();
-            ret.Bytes = new byte[ret.Width*ret.Height*4];
+            ret.Bytes = new byte[ret.Width * ret.Height * 4];
             ret.Bytes = rdr.ReadBytes(ret.Bytes.Length);
             return ret;
         }
@@ -42,7 +42,7 @@ namespace gameserver
 
         public int GetHashCode(IntPoint obj)
         {
-            return obj.X*23 << 16 + obj.Y*17;
+            return obj.X * 23 << 16 + obj.Y * 17;
         }
     }
 
@@ -117,10 +117,10 @@ namespace gameserver
 
         public ARGB(uint argb)
         {
-            A = (byte) ((argb & 0xff000000) >> 24);
-            R = (byte) ((argb & 0x00ff0000) >> 16);
-            G = (byte) ((argb & 0x0000ff00) >> 8);
-            B = (byte) ((argb & 0x000000ff) >> 0);
+            A = (byte)((argb & 0xff000000) >> 24);
+            R = (byte)((argb & 0x00ff0000) >> 16);
+            G = (byte)((argb & 0x0000ff00) >> 8);
+            B = (byte)((argb & 0x000000ff) >> 0);
         }
 
         public static ARGB Read(NReader rdr)
@@ -283,7 +283,7 @@ namespace gameserver
                     else wtr.Write((int)i.Value);
                 }
             }
-            catch(Exception) { }
+            catch (Exception) { }
         }
     }
 }

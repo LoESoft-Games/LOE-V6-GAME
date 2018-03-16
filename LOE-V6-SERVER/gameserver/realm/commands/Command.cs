@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using log4net;
 using gameserver.realm.entity.player;
-using common.config;
+using core.config;
 
 #endregion
 
@@ -17,7 +17,7 @@ namespace gameserver.realm.commands
 
     public abstract class Command
     {
-        protected static readonly ILog log = LogManager.GetLogger(typeof (Command));
+        protected static readonly ILog log = LogManager.GetLogger(typeof(Command));
 
         public Command(string name, int permLevel = 0)
         {
@@ -30,7 +30,7 @@ namespace gameserver.realm.commands
 
         protected abstract bool Process(Player player, RealmTime time, string[] args);
 
-        private static int GetPermissionLevel(Player player) => player.Client.Account.Rank >= 3 ? (int) AccountType.ULTIMATE_ACCOUNT :  player.Client.Account.Rank;
+        private static int GetPermissionLevel(Player player) => player.Client.Account.Rank >= 3 ? (int)AccountType.ULTIMATE_ACCOUNT : player.Client.Account.Rank;
 
         public bool HasPermission(Player player)
         {
@@ -62,7 +62,7 @@ namespace gameserver.realm.commands
 
     public class CommandManager
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof (CommandManager));
+        private static readonly ILog log = LogManager.GetLogger(typeof(CommandManager));
 
         private readonly Dictionary<string, Command> cmds;
 
@@ -72,11 +72,11 @@ namespace gameserver.realm.commands
         {
             this.manager = manager;
             cmds = new Dictionary<string, Command>(StringComparer.InvariantCultureIgnoreCase);
-            Type t = typeof (Command);
+            Type t = typeof(Command);
             foreach (Type i in t.Assembly.GetTypes())
                 if (t.IsAssignableFrom(i) && i != t)
                 {
-                    Command instance = (Command) Activator.CreateInstance(i);
+                    Command instance = (Command)Activator.CreateInstance(i);
                     cmds.Add(instance.CommandName, instance);
                 }
         }

@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +73,7 @@ namespace gameserver.realm.entity.player
         {
             if (item != Inventory[0])
                 return PlayerShootStatus.ITEM_MISMATCH;
-            
+
             int dt = (int)(1 / StatsManager.GetAttackFrequency() * 1 / item.RateOfFire);
 
             if (time < _time.LastClientTime() + dt)
@@ -91,19 +91,19 @@ namespace gameserver.realm.entity.player
                 }
                 _shotsLeft = 0;
             }
-            
+
             _shotsLeft++;
 
             if (_shotsLeft >= item.NumProjectiles)
                 _time.Push(time, Environment.TickCount);
-            
+
             float timeDiff = _time.TimeDiff();
 
             if (timeDiff < MinTimeDiff)
                 return PlayerShootStatus.CLIENT_TOO_SLOW;
             if (timeDiff > MaxTimeDiff)
                 return PlayerShootStatus.CLIENT_TOO_FAST;
-            
+
             return PlayerShootStatus.OK;
         }
 
@@ -133,7 +133,7 @@ namespace gameserver.realm.entity.player
             if (ActivateBoost == null)
             {
                 ActivateBoost = new ActivateBoost[8];
-                for (int i = 0; i< 8; i++)
+                for (int i = 0; i < 8; i++)
                     ActivateBoost[i] = new ActivateBoost();
             }
 
@@ -158,7 +158,7 @@ namespace gameserver.realm.entity.player
 
             for (int i = 0; i < 8; i++) // apply activate boosts
                 Boost[i] += ActivateBoost[i].GetBoost();
-            
+
             if (setTypeBoosts == null) return;
             for (var i = 0; i < 8; i++)
                 Boost[i] += setTypeBoosts[i];
@@ -316,7 +316,7 @@ namespace gameserver.realm.entity.player
 
         internal void SetNewbiePeriod() => newbieTime = 3000;
 
-        internal void SetTPDisabledPeriod() => CanTPCooldownTime = 10*1000;
+        internal void SetTPDisabledPeriod() => CanTPCooldownTime = 10 * 1000;
 
         public bool TPCooledDown() => CanTPCooldownTime > 0 ? false : true;
 
@@ -327,7 +327,7 @@ namespace gameserver.realm.entity.player
         public bool HasSlot(int slot) => Inventory[slot] != null;
 
         public void AwaitMove(int tickId) => _move.Enqueue(tickId);
-        
+
         public void ClientTick(RealmTime time, MOVE pkt)
         {
             int lastClientTime = LastClientTime;
@@ -338,7 +338,7 @@ namespace gameserver.realm.entity.player
 
             if (lastClientTime == -1)
                 return;
-            
+
             _clientTimeLog.Enqueue(pkt.Time - lastClientTime);
             _serverTimeLog.Enqueue((int)(time.TotalElapsedMs - lastServerTime));
 
@@ -367,9 +367,9 @@ namespace gameserver.realm.entity.player
             }
         }
 
-        private static int GetExpGoal(int level) => 50 + (level - 1)*100;
+        private static int GetExpGoal(int level) => 50 + (level - 1) * 100;
 
-        private static int GetLevelExp(int level) => level == 1 ? 0 : 50*(level - 1) + (level - 2)*(level - 1)*50;
+        private static int GetLevelExp(int level) => level == 1 ? 0 : 50 * (level - 1) + (level - 2) * (level - 1) * 50;
 
         private static int GetFameGoal(int fame)
         {
@@ -399,7 +399,7 @@ namespace gameserver.realm.entity.player
         {
             var dx = a.X - b.X;
             var dy = a.Y - b.Y;
-            return (float) Math.Sqrt(dx*dx + dy*dy);
+            return (float)Math.Sqrt(dx * dx + dy * dy);
         }
 
         public void SendAccountList(List<string> list, int id)
@@ -419,7 +419,7 @@ namespace gameserver.realm.entity.player
 
         public void BroadcastSync(Message packet, Predicate<Player> cond)
         {
-            if(worldBroadcast)
+            if (worldBroadcast)
                 Owner.BroadcastPacketSync(packet, cond);
             else
                 pendingPackets.Enqueue(Tuple.Create(packet, cond));

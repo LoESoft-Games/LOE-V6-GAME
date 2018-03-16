@@ -11,7 +11,7 @@ namespace gameserver.networking.error
             string s = null;
             List<JSONError> toSerialize;
             if (labels != null && arguments != null)
-                 toSerialize = GetJSONError(errorID, labels, arguments);
+                toSerialize = GetJSONError(errorID, labels, arguments);
             else
                 toSerialize = GetJSONError(errorID);
             int lenght = toSerialize.Count;
@@ -47,10 +47,12 @@ namespace gameserver.networking.error
                 int j;
                 int lastValid = labels.Length - 1;
 
-                for (int i = 0; i < labels.Length; i++) {
+                for (int i = 0; i < labels.Length; i++)
+                {
                     if (i == 0)
                         parseError.Add(JSONData.Replace(labels[i], arguments[i]));
-                    else {
+                    else
+                    {
                         j = i - 1;
                         parseError.Add(parseError[j].Replace(labels[i], arguments[i]));
                     }

@@ -20,7 +20,7 @@ namespace gameserver.networking
                 }
 
                 if (e.SocketError != SocketError.Success)
-                    throw new SocketException((int) e.SocketError);
+                    throw new SocketException((int)e.SocketError);
 
                 switch (_outgoingState)
                 {
@@ -30,7 +30,7 @@ namespace gameserver.networking
                             parent.Disconnect(DisconnectReason.RECEIVING_HDR);
                             return;
                         }
-                        
+
                         if (e.Buffer[0] == 0xae && e.Buffer[1] == 0x7a && e.Buffer[2] == 0xf2 && e.Buffer[3] == 0xb2 && e.Buffer[4] == 0x95)
                         {
                             byte[] c = Encoding.ASCII.GetBytes($"{parent.Manager.MaxClients}:{Program.Usage}");

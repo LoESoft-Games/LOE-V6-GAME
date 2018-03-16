@@ -9,7 +9,7 @@ using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
 using System.Xml.Linq;
 using gameserver.realm.terrain;
-using common.config;
+using core.config;
 using static gameserver.networking.Client;
 
 #endregion
@@ -26,7 +26,7 @@ namespace gameserver.realm.entity.player
     {
         public static bool InRange<T>(this T value, T from, T to) where T : IComparable<T> => value.CompareTo(from) >= 1 && value.CompareTo(to) <= -1;
 
-        public static AccountType RankToAccountType(int rank) => rank >= 3 ? AccountType.ULTIMATE_ACCOUNT : (AccountType) rank;
+        public static AccountType RankToAccountType(int rank) => rank >= 3 ? AccountType.ULTIMATE_ACCOUNT : (AccountType)rank;
     }
 
     public partial class Player : Character, IContainer, IPlayer
@@ -78,7 +78,7 @@ namespace gameserver.realm.entity.player
                 {
                     Locked = client.Account.Database.GetLockeds(client.Account);
                     Ignored = client.Account.Database.GetIgnoreds(client.Account);
-                    Muted = client.Account.Muted; 
+                    Muted = client.Account.Muted;
                 }
                 catch (Exception ex)
                 {
@@ -150,19 +150,19 @@ namespace gameserver.realm.entity.player
             switch (Owner.Name)
             {
                 case "Arena":
-                {
-                    Client.SendMessage(new ARENA_DEATH
                     {
-                        RestartPrice = 100
-                    });
-                    HP = (int)ObjectDesc.MaxHP;
-                    ApplyConditionEffect(new ConditionEffect
-                    {
-                        Effect = ConditionEffectIndex.Paused,
-                        DurationMS = -1
-                    });
-                    return;
-                }
+                        Client.SendMessage(new ARENA_DEATH
+                        {
+                            RestartPrice = 100
+                        });
+                        HP = (int)ObjectDesc.MaxHP;
+                        ApplyConditionEffect(new ConditionEffect
+                        {
+                            Effect = ConditionEffectIndex.Paused,
+                            DurationMS = -1
+                        });
+                        return;
+                    }
             }
             if (Client.State == ProtocolState.Disconnected || resurrecting)
                 return;
@@ -350,9 +350,9 @@ namespace gameserver.realm.entity.player
                     if (!questPortraits.TryGetValue(i.ObjectDesc.ObjectId, out x)) continue;
 
                     if ((Level < x.Item2 || Level > x.Item3)) continue;
-                    var score = (20 - Math.Abs((i.ObjectDesc.Level ?? 0) - Level))*x.Item1 -
+                    var score = (20 - Math.Abs((i.ObjectDesc.Level ?? 0) - Level)) * x.Item1 -
                                 //priority * level diff
-                                Dist(this, i)/100; //minus 1 for every 100 tile distance
+                                Dist(this, i) / 100; //minus 1 for every 100 tile distance
                     if (score < 0)
                         score = 1;
                     if (!(score > bestScore)) continue;
@@ -369,7 +369,7 @@ namespace gameserver.realm.entity.player
 
         private void HandleQuest(RealmTime time)
         {
-            if (time.TickCount%500 != 0 && Quest?.Owner != null) return;
+            if (time.TickCount % 500 != 0 && Quest?.Owner != null) return;
             var newQuest = FindQuest();
             if (newQuest == null || newQuest == Quest) return;
             Owner.Timers.Add(new WorldTimer(100, (w, t) =>
@@ -385,8 +385,8 @@ namespace gameserver.realm.entity.player
         private void CalculateFame()
         {
             int newFame;
-            if (Experience < 200*1000) newFame = Experience/1000;
-            else newFame = 200 + (Experience - 200*1000)/1000;
+            if (Experience < 200 * 1000) newFame = Experience / 1000;
+            else newFame = 200 + (Experience - 200 * 1000) / 1000;
             if (newFame == Fame) return;
             Fame = newFame;
             int newGoal;
@@ -459,7 +459,7 @@ namespace gameserver.realm.entity.player
                 }, null);
             if (exp > 0)
             {
-                if(XpBoosted)
+                if (XpBoosted)
                     Experience += exp * 2;
                 else
                     Experience += exp;
@@ -488,7 +488,7 @@ namespace gameserver.realm.entity.player
         {
             ProjectileId = id;
             return CreateProjectile(desc, objType,
-                (int) StatsManager.GetAttackDamage(desc.MinDamage, desc.MaxDamage),
+                (int)StatsManager.GetAttackDamage(desc.MinDamage, desc.MaxDamage),
                 time, position, angle);
         }
 
@@ -533,7 +533,7 @@ namespace gameserver.realm.entity.player
 
             if (Mp < 0)
                 Mp = 0;
-            
+
             if (Owner != null)
             {
                 SendNewTick(time);

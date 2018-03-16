@@ -25,10 +25,10 @@ namespace gameserver.logic.behaviors
         public Grenade(double radius, int damage, double range = 5,
             double? fixedAngle = null, Cooldown coolDown = new Cooldown(), uint color = 0xFF0000, ConditionEffectIndex effect = ConditionEffectIndex.Hidden, int effectDuration = -1)
         {
-            this.radius = (float) radius;
+            this.radius = (float)radius;
             this.damage = damage;
             this.range = range;
-            this.fixedAngle = fixedAngle*Math.PI/180;
+            this.fixedAngle = fixedAngle * Math.PI / 180;
             this.coolDown = coolDown.Normalize();
             this.color = color;
             this.effect = effect;
@@ -42,7 +42,7 @@ namespace gameserver.logic.behaviors
 
         protected override void TickCore(Entity host, RealmTime time, ref object state)
         {
-            int cool = (int) state;
+            int cool = (int)state;
 
             if (cool <= 0)
             {
@@ -55,8 +55,8 @@ namespace gameserver.logic.behaviors
                     if (fixedAngle != null)
                         target = new Position
                         {
-                            X = host.X + (float)(range*Math.Cos(fixedAngle.Value)),
-                            Y = host.Y + (float)(range*Math.Sin(fixedAngle.Value)),
+                            X = host.X + (float)(range * Math.Cos(fixedAngle.Value)),
+                            Y = host.Y + (float)(range * Math.Sin(fixedAngle.Value)),
                         };
                     else
                         target = new Position
@@ -83,7 +83,8 @@ namespace gameserver.logic.behaviors
                             OriginType = (short)host.ObjectType,
                             Color = new ARGB(color)
                         }, null);
-                        world.Aoe(target, radius, true, p => {
+                        world.Aoe(target, radius, true, p =>
+                        {
                             if (effect != ConditionEffectIndex.Hidden && effectDuration != -1)
                                 (p as Player).ApplyConditionEffect(new ConditionEffect
                                 {

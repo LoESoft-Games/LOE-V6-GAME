@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using log4net;
 using System.Linq;
 using gameserver.networking.outgoing;
@@ -99,7 +99,8 @@ namespace gameserver.realm
 
         public void Tell(Player player, string BOT_NAME, string callback)
         {
-            player.Client.SendMessage(new TEXT() {
+            player.Client.SendMessage(new TEXT()
+            {
                 ObjectId = -1,
                 BubbleTime = 10,
                 Stars = 70,
@@ -141,9 +142,9 @@ namespace gameserver.realm
                             .Where(x => x.Account.GuildId == e.Content.To)
                             .Select(x => x.Player))
                         {
-                           // i.GuildReceived(
-                           //     e.Content.Inst == manager.InstanceId ? e.Content.ObjId : -1,
-                           //     e.Content.Stars, from, e.Content.Text);
+                            // i.GuildReceived(
+                            //     e.Content.Inst == manager.InstanceId ? e.Content.ObjId : -1,
+                            //     e.Content.Stars, from, e.Content.Text);
                         }
                     }
                     break;
@@ -153,7 +154,7 @@ namespace gameserver.realm
                             .Where(x => x.Player != null)
                             .Select(x => x.Player))
                         {
-                          //  i.AnnouncementReceived(e.Content.Text);
+                            //  i.AnnouncementReceived(e.Content.Text);
                         }
                     }
                     break;

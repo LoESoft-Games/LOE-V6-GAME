@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using gameserver.realm.terrain;
 
 #endregion
@@ -10,7 +10,7 @@ namespace gameserver.realm.mapsetpiece
 {
     internal class Avatar : MapSetPiece
     {
-        private static readonly string[] Ground = {"shtrs Disaster Floor", "shtrs Shattered Floor"};
+        private static readonly string[] Ground = { "shtrs Disaster Floor", "shtrs Shattered Floor" };
         private static readonly string PureEvil = "Pure Evil";
 
         private readonly Random rand = new Random();

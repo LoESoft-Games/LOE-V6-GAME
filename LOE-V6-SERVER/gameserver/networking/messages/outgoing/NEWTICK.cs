@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -31,7 +31,7 @@ namespace gameserver.networking.outgoing
             wtr.Write(TickId);
             wtr.Write(TickTime);
 
-            wtr.Write((ushort) UpdateStatuses.Length);
+            wtr.Write((ushort)UpdateStatuses.Length);
             foreach (ObjectStats i in UpdateStatuses)
                 i.Write(wtr);
         }

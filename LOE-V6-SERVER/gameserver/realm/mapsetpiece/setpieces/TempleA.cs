@@ -22,18 +22,18 @@ namespace gameserver.realm.mapsetpiece
             for (int x = 0; x < 60; x++) //Flooring
                 for (int y = 0; y < 60; y++)
                 {
-                    if (Math.Abs(x - Size/2)/(Size/2.0) + rand.NextDouble()*0.3 < 0.9 &&
-                        Math.Abs(y - Size/2)/(Size/2.0) + rand.NextDouble()*0.3 < 0.9)
+                    if (Math.Abs(x - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.9 &&
+                        Math.Abs(y - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.9)
                     {
                         double dist =
-                            Math.Sqrt(((x - Size/2)*(x - Size/2) + (y - Size/2)*(y - Size/2))/((Size/2.0)*(Size/2.0)));
-                        t[x, y] = rand.NextDouble() < (1 - dist)*(1 - dist) ? 2 : 1;
+                            Math.Sqrt(((x - Size / 2) * (x - Size / 2) + (y - Size / 2) * (y - Size / 2)) / ((Size / 2.0) * (Size / 2.0)));
+                        t[x, y] = rand.NextDouble() < (1 - dist) * (1 - dist) ? 2 : 1;
                     }
                 }
 
             for (int x = 0; x < Size; x++) //Corruption
                 for (int y = 0; y < Size; y++)
-                    if (rand.Next()%50 == 0)
+                    if (rand.Next() % 50 == 0)
                         t[x, y] = 0;
 
             const int bas = 17; //Walls
@@ -99,11 +99,11 @@ namespace gameserver.realm.mapsetpiece
             Item[] items = chest.GetLoots(world.Manager, 3, 8).ToArray();
             for (int i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];
-            container.Move(pos.X + Size/2, pos.Y + Size/2);
+            container.Move(pos.X + Size / 2, pos.Y + Size / 2);
             world.EnterWorld(container);
 
             Entity snake = Entity.Resolve(world.Manager, 0x0dc2);
-            snake.Move(pos.X + Size/2, pos.Y + Size/2);
+            snake.Move(pos.X + Size / 2, pos.Y + Size / 2);
             world.EnterWorld(snake);
         }
     }

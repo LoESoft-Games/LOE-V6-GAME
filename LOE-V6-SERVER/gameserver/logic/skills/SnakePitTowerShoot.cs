@@ -42,9 +42,9 @@ namespace gameserver.logic.behaviors
                 WmapTile tile = host.Owner.Map[(int)host.X + 1, (int)host.Y].Clone();
 
                 if (tile.ObjType != 0)
-                    fixedAngle = (float?) (180*Math.PI/180);
+                    fixedAngle = (float?)(180 * Math.PI / 180);
                 else
-                    fixedAngle = (float?) (0*Math.PI/180);
+                    fixedAngle = (float?)(0 * Math.PI / 180);
 
 
                 if (player != null || defaultAngle != null || fixedAngle != null)

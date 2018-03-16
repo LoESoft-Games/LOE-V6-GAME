@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using gameserver.realm.terrain;
 
 #endregion
@@ -26,7 +26,7 @@ namespace gameserver.realm.mapsetpiece
 
             for (int x = 2; x < 23; x++) //Floor
                 for (int y = 1; y < 24; y++)
-                    t[x, y] = rand.Next()%10 == 0 ? 0 : 1;
+                    t[x, y] = rand.Next() % 10 == 0 ? 0 : 1;
 
             for (int y = 1; y < 24; y++) //Perimeters
                 t[2, y] = t[22, y] = 2;
@@ -46,7 +46,7 @@ namespace gameserver.realm.mapsetpiece
                 }
 
             for (int y = 0; y < 6; y++) //Pillars
-                t[9, 4 + 3*y] = t[15, 4 + 3*y] = 4;
+                t[9, 4 + 3 * y] = t[15, 4 + 3 * y] = 4;
 
             for (int x = 0; x < 25; x++) //Corruption
                 for (int y = 0; y < 26; y++)
@@ -112,7 +112,7 @@ namespace gameserver.realm.mapsetpiece
 
             //Boss
             Entity lich = Entity.Resolve(world.Manager, "Lich");
-            lich.Move(pos.X + Size/2, pos.Y + Size/2);
+            lich.Move(pos.X + Size / 2, pos.Y + Size / 2);
             world.EnterWorld(lich);
         }
     }

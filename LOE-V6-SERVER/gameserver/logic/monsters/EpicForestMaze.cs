@@ -196,5 +196,5 @@ namespace gameserver.logic
                     )
                 )
             );
-                 }
+    }
 }

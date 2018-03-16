@@ -4,8 +4,8 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using log4net;
-using common;
-using common.config;
+using core;
+using core.config;
 
 #endregion
 
@@ -13,7 +13,7 @@ namespace gameserver.networking
 {
     internal class PolicyServer
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof (PolicyServer));
+        private static readonly ILog log = LogManager.GetLogger(typeof(PolicyServer));
 
         private readonly TcpListener listener;
         private bool started;
@@ -34,9 +34,13 @@ namespace gameserver.networking
                 NWriter wtr = new NWriter(s);
                 if (rdr.ReadNullTerminatedString() == "<policy-file-request/>")
                 {
-                    wtr.WriteNullTerminatedString(Settings.IS_PRODUCTION ? Settings.NETWORKING.INTERNAL.SELECTED_DOMAINS : Settings.NETWORKING.INTERNAL.LOCALHOST_DOMAINS);
-                    wtr.Write((byte) '\r');
-                    wtr.Write((byte) '\n');
+                    wtr.WriteNullTerminatedString(
+                        @"<cross-domain-policy>
+                            <allow-access-from domain=""*"" to-ports=""*"" />
+                        </cross-domain-policy>"
+                    );
+                    wtr.Write((byte)'\r');
+                    wtr.Write((byte)'\n');
                 }
                 cli.Close();
             }

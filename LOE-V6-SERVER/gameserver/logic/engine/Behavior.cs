@@ -16,7 +16,7 @@ namespace gameserver.logic
         /// Enable debug log
         /// </summary>
         public static readonly bool debug = false;
-        
+
         [ThreadStatic]
         private static Random rand;
         protected static Random Random

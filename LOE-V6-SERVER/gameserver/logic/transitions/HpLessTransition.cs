@@ -23,7 +23,7 @@ namespace gameserver.logic.transitions
         {
             if (threshold > 1.0)
                 return (host as Enemy).HP < threshold;
-            return ((host as Enemy).HP/host.ObjectDesc.MaxHP) < threshold;
+            return ((host as Enemy).HP / host.ObjectDesc.MaxHP) < threshold;
         }
     }
 }

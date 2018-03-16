@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using common;
+using core;
 using log4net;
 using gameserver.logic;
 using gameserver.networking;
 using gameserver.realm.commands;
 using gameserver.realm.entity.player;
 using gameserver.realm.world;
-using common.config;
+using core.config;
 using gameserver.realm.entity.merchant;
 using static gameserver.networking.Client;
 
@@ -230,12 +230,12 @@ namespace gameserver.realm
         public void Run()
         {
             log.Info("Starting Realm Manager...");
-            
+
             Logic = new LogicTicker(this);
             var logic = new Task(() => Logic.TickLoop(), TaskCreationOptions.LongRunning);
             logic.ContinueWith(Program.Stop, TaskContinuationOptions.OnlyOnFaulted);
             logic.Start();
-                        
+
             Network = new NetworkTicker(this);
             var network = new Task(() => Network.TickLoop(), TaskCreationOptions.LongRunning);
             network.ContinueWith(Program.Stop, TaskContinuationOptions.OnlyOnFaulted);
@@ -290,7 +290,7 @@ namespace gameserver.realm
 
         private void OnWorldAdded(World world)
         {
-            if(world.Manager == null)
+            if (world.Manager == null)
                 world.Manager = this;
             if (world is GameWorld)
                 Monitor.WorldAdded(world);

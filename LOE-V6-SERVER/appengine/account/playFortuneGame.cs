@@ -1,6 +1,6 @@
 #region
 
-using common;
+using core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace appengine.account
             {
                 DbAccount acc;
                 LoginStatus status = Database.Verify(Query["guid"], Query["password"], out acc);
-                
+
                 currency = -1;
                 int.TryParse(Query["currency"], out currency);
                 rows = -1;
@@ -42,21 +42,21 @@ namespace appengine.account
                     List<int> giftsList = acc.Gifts.ToList();
                     int[] gifts = null;
                     List<string> candidates = new List<string>(3);
-                    
+
                     if (Query["gameId"] == null)
                     {
                         WriteLine("<Error>Fortune Game ID not declared.</Error>");
                         return;
                     }
-                    
+
                     SerializeMiniGames box = SerializeMiniGames.GetBox(int.Parse(Query["gameId"]), CONSTANTS.FORTUNE_GAME);
-                    
+
                     if (box == null)
                     {
                         WriteLine($"<Error>Fortune Game ID {Query["gameId"]} not found.</Error>");
                         return;
                     }
-                    
+
                     switch (currency)
                     {
                         case CONSTANTS.GOLD:
@@ -79,7 +79,7 @@ namespace appengine.account
                             }
                             return;
                     }
-                    
+
                     do
                     {
                         string item = Utils.GetCommaSepString(GetAwards(box.Contents));
@@ -227,7 +227,7 @@ namespace appengine.account
                             }
                             return;
                     }
-                    
+
                     switch (currency)
                     {
                         case CONSTANTS.GOLD:
@@ -246,19 +246,19 @@ namespace appengine.account
                             }
                             return;
                     }
-                    
+
                     acc.Gifts = giftsList.ToArray();
-                    
+
                     acc.Flush();
                     acc.Reload();
-                    
+
                     WriteLine(data);
                 }
                 else
                     WriteErrorLine(status.GetInfo());
             }
         }
-        
+
         private int[] GetAwards(string items)
         {
             int[] ret = new int[items.Split(';').Length];

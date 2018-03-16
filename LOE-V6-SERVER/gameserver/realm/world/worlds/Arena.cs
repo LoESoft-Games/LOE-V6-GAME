@@ -102,15 +102,15 @@ namespace gameserver.realm.world
                 List<string> enems = new List<string>();
                 Random r = new Random();
 
-                for (int i = 0; i < wave/3 + 1; i++)
+                for (int i = 0; i < wave / 3 + 1; i++)
                 {
                     enems.Add(Gods[r.Next(0, Gods.Length)]);
                 }
-                for (int i = 0; i < wave/3 + 1; i++)
+                for (int i = 0; i < wave / 3 + 1; i++)
                 {
                     enems.Add(NormalEnemies[r.Next(0, NormalEnemies.Length)]);
                 }
-                for (int i = 0; i < wave/3 + 1; i++)
+                for (int i = 0; i < wave / 3 + 1; i++)
                 {
                     enems.Add(WeakEnemies[r.Next(0, WeakEnemies.Length)]);
                 }

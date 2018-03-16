@@ -32,7 +32,7 @@ namespace gameserver.logic.behaviors
             {
                 var dat = e.Host.Manager.GameData;
                 var w = e.Host.Owner;
-                var pos = new IntPoint((int) e.Host.X - (dist/2), (int) e.Host.Y - (dist/2));
+                var pos = new IntPoint((int)e.Host.X - (dist / 2), (int)e.Host.Y - (dist / 2));
                 if (w == null) return;
                 for (int x = 0; x < dist; x++)
                 {

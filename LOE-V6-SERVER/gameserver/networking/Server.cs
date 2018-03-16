@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using log4net;
 using gameserver.realm;
-using common.config;
+using core.config;
 using static gameserver.networking.Client;
 
 #endregion
@@ -15,7 +15,7 @@ namespace gameserver.networking
 {
     internal class Server
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof (Server));
+        private static readonly ILog log = LogManager.GetLogger(typeof(Server));
 
         public Server(RealmManager manager)
         {

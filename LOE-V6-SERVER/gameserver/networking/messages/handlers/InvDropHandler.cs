@@ -56,17 +56,17 @@ namespace gameserver.networking.handlers
                     Container container;
                     if (item.Soulbound)
                     {
-                        container = new Container(client.Player.Manager, SOUL_BAG, 1000*30, true)
+                        container = new Container(client.Player.Manager, SOUL_BAG, 1000 * 30, true)
                         {
                             BagOwners = new string[1] { client.Player.AccountId }
                         };
                     }
                     else
                     {
-                        container = new Container(client.Player.Manager, NORM_BAG, 1000*30, true);
+                        container = new Container(client.Player.Manager, NORM_BAG, 1000 * 30, true);
                     }
-                    float bagx = entity.X + (float) ((invRand.NextDouble()*2 - 1)*0.5);
-                    float bagy = entity.Y + (float) ((invRand.NextDouble()*2 - 1)*0.5);
+                    float bagx = entity.X + (float)((invRand.NextDouble() * 2 - 1) * 0.5);
+                    float bagy = entity.Y + (float)((invRand.NextDouble() * 2 - 1) * 0.5);
                     try
                     {
                         container.Inventory[0] = item;

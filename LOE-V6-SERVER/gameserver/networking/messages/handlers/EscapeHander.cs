@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
 using gameserver.realm;

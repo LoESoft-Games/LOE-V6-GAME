@@ -1,9 +1,6 @@
-﻿using common;
-using log4net;
+﻿using core;
 using System;
 using System.IO;
-using System.Net;
-using System.Xml;
 
 
 namespace appengine.guild

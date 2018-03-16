@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using gameserver.logic.loot;
 using gameserver.realm.terrain;
 

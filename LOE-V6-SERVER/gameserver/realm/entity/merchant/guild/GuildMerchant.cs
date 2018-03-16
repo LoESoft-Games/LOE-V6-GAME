@@ -36,7 +36,7 @@ namespace gameserver.realm.entity
 
         public override void Buy(Player player)
         {
-            
+
         }
     }
 }

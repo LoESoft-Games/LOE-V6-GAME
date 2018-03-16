@@ -42,7 +42,7 @@ namespace gameserver.realm.entity
 
         public Position SpawnPoint
         {
-            get { return pos ?? new Position {X = X, Y = Y}; }
+            get { return pos ?? new Position { X = X, Y = Y }; }
         }
 
         protected override void ExportStats(IDictionary<StatsType, object> stats)
@@ -87,7 +87,7 @@ namespace gameserver.realm.entity
                 int def = ObjectDesc.Defense;
                 if (noDef)
                     def = 0;
-                dmg = (int) StatsManager.GetDefenseDamage(this, dmg, def);
+                dmg = (int)StatsManager.GetDefenseDamage(this, dmg, def);
                 int effDmg = dmg;
                 if (effDmg > HP)
                     effDmg = HP;
@@ -150,14 +150,14 @@ namespace gameserver.realm.entity
                 {
                     TargetId = Id,
                     Effects = projectile.ConditionEffects,
-                    Damage = (ushort) dmg,
+                    Damage = (ushort)dmg,
                     Killed = HP <= 0,
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.ProjectileOwner.Self.Id
                 }, HP <= 0 && !IsOneHit(dmg, prevHp) ? null : projectile.ProjectileOwner as Player);
 
                 counter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
-                
+
                 if (HP <= 0)
                     Death(time);
 
@@ -170,17 +170,17 @@ namespace gameserver.realm.entity
         public override void Tick(RealmTime time)
         {
             if (pos == null)
-                pos = new Position {X = X, Y = Y};
+                pos = new Position { X = X, Y = Y };
 
             if (!stat && HasConditionEffect(ConditionEffectIndex.Bleeding))
             {
                 if (bleeding > 1)
                 {
-                    HP -= (int) bleeding;
-                    bleeding -= (int) bleeding;
+                    HP -= (int)bleeding;
+                    bleeding -= (int)bleeding;
                     UpdateCount++;
                 }
-                bleeding += 28*(time.ElapsedMsDelta/1000f);
+                bleeding += 28 * (time.ElapsedMsDelta / 1000f);
             }
             base.Tick(time);
         }

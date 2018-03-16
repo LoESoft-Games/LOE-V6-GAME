@@ -1,5 +1,5 @@
-﻿using common;
-using common.config;
+﻿using core;
+using core.config;
 using gameserver.realm;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace gameserver.networking
     public partial class Client : IDisposable
     {
         private bool disposed;
-        
+
         public Socket Socket { get; internal set; }
         public RealmManager Manager { get; private set; }
         public RC4 IncomingCipher { get; private set; }
@@ -24,9 +24,9 @@ namespace gameserver.networking
         public DbAccount Account { get; internal set; }
 
         public wRandom Random { get; internal set; }
-        
+
         public int Id { get; internal set; }
-        public int TargetWorld { get; internal set; }   
+        public int TargetWorld { get; internal set; }
         public string ConnectedBuild { get; internal set; }
 
         public byte[] _IncomingCipher => new byte[] { 0x8D, 0x48, 0x0B, 0xE9, 0xC9, 0x29, 0xEB, 0x61 };

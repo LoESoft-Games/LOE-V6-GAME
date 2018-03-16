@@ -9,12 +9,12 @@ namespace gameserver.networking
 
         static MessageHandler()
         {
-            foreach (Type i in typeof (Message).Assembly.GetTypes())
+            foreach (Type i in typeof(Message).Assembly.GetTypes())
             {
-                if (typeof (IMessage).IsAssignableFrom(i) &&
+                if (typeof(IMessage).IsAssignableFrom(i) &&
                     !i.IsAbstract && !i.IsInterface)
                 {
-                    IMessage pkt = (IMessage) Activator.CreateInstance(i);
+                    IMessage pkt = (IMessage)Activator.CreateInstance(i);
                     Handlers.Add(pkt.ID, pkt);
                 }
             }

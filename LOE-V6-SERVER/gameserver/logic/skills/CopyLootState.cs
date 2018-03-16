@@ -23,7 +23,7 @@ namespace gameserver.logic.behaviors
             if (host is Enemy)
             {
                 foreach (Entity i in host.GetNearestEntities(radius, children))
-                    if(i is Enemy)
+                    if (i is Enemy)
                         if ((i as Enemy).LootState != (host as Enemy).LootState)
                             (i as Enemy).LootState = (host as Enemy).LootState;
             }

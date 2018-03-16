@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace gameserver.realm.entity.merchant
 
             if (Random == null) Random = new Random();
             if (AddedTypes == null) AddedTypes = new List<KeyValuePair<string, int>>();
-            if(owner != null) ResolveMType();
+            if (owner != null) ResolveMType();
         }
 
         public override void Init(World owner)
@@ -53,7 +53,7 @@ namespace gameserver.realm.entity.merchant
                     }
                 }
 
-                if (MRemaining == 0 &&  MType != -1)
+                if (MRemaining == 0 && MType != -1)
                 {
                     if (AddedTypes.Contains(new KeyValuePair<string, int>(Owner.Name, MType)))
                         AddedTypes.Remove(new KeyValuePair<string, int>(Owner.Name, MType));
@@ -98,37 +98,37 @@ namespace gameserver.realm.entity.merchant
         {
             MType = -1;
             var list = new int[0];
-            if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_1)
+            if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_1)
                 list = region1list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_2)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_2)
                 list = region2list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_3)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_3)
                 list = region3list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_4)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_4)
                 list = region4list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_5)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_5)
                 list = region5list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_6)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_6)
                 list = region6list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_7)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_7)
                 list = region7list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_8)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_8)
                 list = region8list;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_12)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_12)
                 list = accessorylist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_13)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_13)
                 list = largeclothlist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_14)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_14)
                 list = smallclothlist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_15)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_15)
                 list = clothinglist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_16)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_16)
                 list = accessorylist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_17)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_17)
                 list = largeclothlist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_18)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_18)
                 list = smallclothlist;
-            else if (Owner.Map[(int) X, (int) Y].Region == TileRegion.Store_19)
+            else if (Owner.Map[(int)X, (int)Y].Region == TileRegion.Store_19)
                 list = clothinglist;
 
             if (AddedTypes == null) AddedTypes = new List<KeyValuePair<string, int>>();
@@ -148,13 +148,13 @@ namespace gameserver.realm.entity.merchant
 
                 var s = Random.Next(0, 100);
 
-                if(s < 2)
+                if (s < 2)
                     Discount = 50;
-                else if(s < 5)
+                else if (s < 5)
                     Discount = 25;
                 else if (s < 10)
                     Discount = 15;
-                else if(s < 15)
+                else if (s < 15)
                     Discount = 10;
                 else Discount = 0;
 
@@ -173,14 +173,14 @@ namespace gameserver.realm.entity.merchant
             }
             UpdateCount++;
         }
-        
+
         /// <summary>
         /// Return to log formatted structure for price dictionary
         /// </summary>
         /// <param name="objtype"></param>
         /// <param name="objid"></param>
         /// <param name="price"></param>
-        internal static void _data(int objtype, string objid, int price = 0) => log.Info("{ " + objtype  + ", new Tuple<int, CurrencyType>(" + price + ", CurrencyType.Gold) }, // " + objid);
+        internal static void _data(int objtype, string objid, int price = 0) => log.Info("{ " + objtype + ", new Tuple<int, CurrencyType>(" + price + ", CurrencyType.Gold) }, // " + objid);
 
         /// <summary>
         /// Return price based in feedpower
@@ -276,13 +276,15 @@ namespace gameserver.realm.entity.merchant
                     return 600;
                 else // Wand of Recompense
                     return 550;
-            } else if (type == "armor")
+            }
+            else if (type == "armor")
             {
                 if (slottype == 6) // Hydra Skin Armor
                     return 800;
                 else // Acropolis Armor and Robe of the Grand Sorcerer
                     return 850;
-            } else
+            }
+            else
                 return int.MaxValue;
         }
 

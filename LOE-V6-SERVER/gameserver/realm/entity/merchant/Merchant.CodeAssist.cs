@@ -46,7 +46,7 @@ namespace gameserver.realm.entity.merchant
                             {
                                 player.Inventory[i] = Manager.GameData.Items[(ushort)MType];
 
-                                switch(Currency)
+                                switch (Currency)
                                 {
                                     case CurrencyType.Fame:
                                         {
@@ -150,10 +150,10 @@ namespace gameserver.realm.entity.merchant
 
         private static int returnProdLikePrices(int tier, string type)
         {
-            switch(type)
+            switch (type)
             {
                 case "weapons":
-                    switch(tier)
+                    switch (tier)
                     {
                         case 8: return 51;
                         case 9: return 150;
@@ -163,14 +163,14 @@ namespace gameserver.realm.entity.merchant
                         default: return -1;
                     }
                 case "abilities":
-                    switch(tier)
+                    switch (tier)
                     {
                         case 5: return 175;
                         case 6: return 400;
                         default: return -1;
                     }
                 case "armors":
-                    switch(tier)
+                    switch (tier)
                     {
                         case 9: return 51;
                         case 10: return 100;
@@ -180,7 +180,7 @@ namespace gameserver.realm.entity.merchant
                         default: return -1;
                     }
                 case "rings":
-                    switch(tier)
+                    switch (tier)
                     {
                         case 4: return 180;
                         case 5: return 360;

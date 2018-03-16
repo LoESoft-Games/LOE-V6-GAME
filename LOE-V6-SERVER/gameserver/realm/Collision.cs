@@ -78,8 +78,8 @@ namespace gameserver.realm
         {
             this.type = type;
             chunks = new CollisionNode<T>[
-                cW = (w + CHUNK_SIZE - 1)/CHUNK_SIZE,
-                cH = (h + CHUNK_SIZE - 1)/CHUNK_SIZE];
+                cW = (w + CHUNK_SIZE - 1) / CHUNK_SIZE,
+                cH = (h + CHUNK_SIZE - 1) / CHUNK_SIZE];
             this.w = w;
             this.h = h;
         }
@@ -94,8 +94,8 @@ namespace gameserver.realm
             if (obj.CollisionNode != null)
                 throw new InvalidOperationException("Object already added into collision map.");
 
-            int x = (int) (obj.X/CHUNK_SIZE);
-            int y = (int) (obj.Y/CHUNK_SIZE);
+            int x = (int)(obj.X / CHUNK_SIZE);
+            int y = (int)(obj.Y / CHUNK_SIZE);
             obj.CollisionNode = new CollisionNode<T>
             {
                 Data = GetData(x, y),
@@ -119,13 +119,13 @@ namespace gameserver.realm
             if (obj.Parent != this)
                 throw new InvalidOperationException("Cannot move object accoss different map.");
 
-            int x = (int) (newX/CHUNK_SIZE);
-            int y = (int) (newY/CHUNK_SIZE);
+            int x = (int)(newX / CHUNK_SIZE);
+            int y = (int)(newY / CHUNK_SIZE);
             int newDat = GetData(x, y);
             if (obj.CollisionNode.Data != newDat)
             {
-                int oldX = (int) (obj.X/CHUNK_SIZE);
-                int oldY = (int) (obj.Y/CHUNK_SIZE);
+                int oldX = (int)(obj.X / CHUNK_SIZE);
+                int oldY = (int)(obj.Y / CHUNK_SIZE);
                 if (chunks[oldX, oldY] == obj.CollisionNode)
                     chunks[oldX, oldY] = obj.CollisionNode.Remove();
                 else
@@ -146,8 +146,8 @@ namespace gameserver.realm
             if (obj.Parent != this)
                 throw new InvalidOperationException("Cannot remove object accoss different map.");
 
-            int x = (int) (obj.X/CHUNK_SIZE);
-            int y = (int) (obj.Y/CHUNK_SIZE);
+            int x = (int)(obj.X / CHUNK_SIZE);
+            int y = (int)(obj.Y / CHUNK_SIZE);
             if (chunks[x, y] == obj.CollisionNode)
                 chunks[x, y] = obj.CollisionNode.Remove();
             else
@@ -161,17 +161,17 @@ namespace gameserver.realm
 
         public IEnumerable<T> HitTest(double _x, double _y, double radius)
         {
-            int xl = Math.Max(0, (int) (_x - radius)/CHUNK_SIZE);
-            int xh = Math.Min(cW - 1, (int) (_x + radius)/CHUNK_SIZE);
-            int yl = Math.Max(0, (int) (_y - radius)/CHUNK_SIZE);
-            int yh = Math.Min(cH - 1, (int) (_y + radius)/CHUNK_SIZE);
+            int xl = Math.Max(0, (int)(_x - radius) / CHUNK_SIZE);
+            int xh = Math.Min(cW - 1, (int)(_x + radius) / CHUNK_SIZE);
+            int yl = Math.Max(0, (int)(_y - radius) / CHUNK_SIZE);
+            int yh = Math.Min(cH - 1, (int)(_y + radius) / CHUNK_SIZE);
             for (int y = yl; y <= yh; y++)
                 for (int x = xl; x <= xh; x++)
                 {
                     CollisionNode<T> node = chunks[x, y];
                     while (node != null)
                     {
-                        yield return (T) node.Parent;
+                        yield return (T)node.Parent;
                         node = node.Next;
                     }
                 }
@@ -180,12 +180,12 @@ namespace gameserver.realm
         public IEnumerable<T> HitTest(double _x, double _y)
         {
             if (_x < 0 || _x >= w || _y <= 0 || _y >= h) yield break;
-            int x = (int) _x/CHUNK_SIZE;
-            int y = (int) _y/CHUNK_SIZE;
+            int x = (int)_x / CHUNK_SIZE;
+            int y = (int)_y / CHUNK_SIZE;
             CollisionNode<T> node = chunks[x, y];
             while (node != null)
             {
-                yield return (T) node.Parent;
+                yield return (T)node.Parent;
                 node = node.Next;
             }
         }
@@ -208,7 +208,7 @@ namespace gameserver.realm
                                 CollisionNode<T> node = chunks[x + j, y + i];
                                 while (node != null)
                                 {
-                                    ret.Add((T) node.Parent);
+                                    ret.Add((T)node.Parent);
                                     node = node.Next;
                                 }
                             }

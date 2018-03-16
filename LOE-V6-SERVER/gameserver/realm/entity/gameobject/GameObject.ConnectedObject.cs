@@ -51,7 +51,7 @@ namespace gameserver.realm.entity
             for (int i = 0; i < 4; i++)
                 if (!Infos.ContainsKey(bits))
                 {
-                    Infos[bits] = Infos2[Tuple.Create(type, i*90)] = new ConnectionInfo(bits, type, i*90);
+                    Infos[bits] = Infos2[Tuple.Create(type, i * 90)] = new ConnectionInfo(bits, type, i * 90);
                     bits = (bits >> 8) | (bits << 24);
                 }
         }
@@ -79,7 +79,7 @@ namespace gameserver.realm.entity
             if (z[1, 0] && z[1, 1] && z[1, 2] && z[0, 1])
                 return ConnectionInfo.Infos2[Tuple.Create(ConnectionType.T, 270)];
 
-            if (z[1, 0] && z[1, 1] && z[1, 2]) 
+            if (z[1, 0] && z[1, 1] && z[1, 2])
                 return ConnectionInfo.Infos2[Tuple.Create(ConnectionType.Line, 0)];
             if (z[0, 1] && z[1, 1] && z[2, 1])
                 return ConnectionInfo.Infos2[Tuple.Create(ConnectionType.Line, 90)];

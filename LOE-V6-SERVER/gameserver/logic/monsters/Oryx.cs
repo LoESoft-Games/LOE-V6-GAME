@@ -160,17 +160,17 @@ namespace gameserver.logic
                         new TimedTransition(25000, "gaze")
                         ),
 
-                    #region gaze
+        #region gaze
                     new State("gaze",
                         new Taunt("All who looks upon my face shall die."),
                         new Shoot(count: 2, coolDown: 1000, projectileIndex: 1, radius: 7, shootAngle: 10,
                             coolDownOffset: 800),
                         new TimedTransition(10000, "Dance 2")
-                        #endregion gaze
+        #endregion gaze
 
                         ),
 
-                    #region Dance 2
+        #region Dance 2
                     new State("Dance 2",
                         new Flash(0xf389E13, 0.5, 60),
                         new Taunt("Time for more dancing!"),
@@ -212,7 +212,7 @@ namespace gameserver.logic
                         new TimedTransition(200, "Dance2, 1")
                         ),
 
-                    #endregion Dance 2
+        #endregion Dance 2
                     new State("rage",
                         new ChangeSize(10, 200),
                         new Taunt(.3, "I HAVE HAD ENOUGH OF YOU!!!",

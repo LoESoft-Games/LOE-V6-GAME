@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Linq;
-using common;
+using core;
 using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
 using gameserver.realm.entity.player;

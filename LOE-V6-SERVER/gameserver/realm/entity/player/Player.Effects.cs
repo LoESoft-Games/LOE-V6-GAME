@@ -33,12 +33,12 @@ namespace gameserver.realm.entity.player
             {
                 if (healing > 1)
                 {
-                    HP = Math.Min(Stats[0] + Boost[0], HP + (int) healing);
-                    healing -= (int) healing;
+                    HP = Math.Min(Stats[0] + Boost[0], HP + (int)healing);
+                    healing -= (int)healing;
                     UpdateCount++;
                     healCount++;
                 }
-                healing += 28*(time.ElapsedMsDelta/1000f);
+                healing += 28 * (time.ElapsedMsDelta / 1000f);
             }
             if (HasConditionEffect(ConditionEffectIndex.Quiet) &&
                 Mp > 0)
@@ -51,11 +51,11 @@ namespace gameserver.realm.entity.player
             {
                 if (bleeding > 1)
                 {
-                    HP -= (int) bleeding;
-                    bleeding -= (int) bleeding;
+                    HP -= (int)bleeding;
+                    bleeding -= (int)bleeding;
                     UpdateCount++;
                 }
-                bleeding += 28*(time.ElapsedMsDelta/1000f);
+                bleeding += 28 * (time.ElapsedMsDelta / 1000f);
             }
 
             if (newbieTime > 0)

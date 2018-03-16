@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -24,7 +24,7 @@ namespace gameserver.networking.outgoing
         protected override void Write(NWriter wtr)
         {
             wtr.Write(OwnerId);
-            wtr.Write((byte) SoundId);
+            wtr.Write((byte)SoundId);
         }
     }
 }

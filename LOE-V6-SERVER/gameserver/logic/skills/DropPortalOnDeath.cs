@@ -54,18 +54,18 @@ namespace gameserver.logic.behaviors
                     Entity en = e.Host;
                     World w = e.Host.Manager.GetWorld(e.Host.Owner.Id);
                     entity.Move(en.X + xAdjustment, en.Y + yAdjustment);
-                    w.Timers.Add(new WorldTimer(dropDelay*1000, (world, t) => { w.EnterWorld(entity); }));
-                    w.Timers.Add(new WorldTimer(despawnTime*1000, (world, t) =>
-                    {
-                        try
-                        {
-                            w.LeaveWorld(entity);
-                        }
-                        catch (Exception ex)
-                        {
-                            log.ErrorFormat("Couldn't despawn portal.\n{0}", ex);
-                        }
-                    }));
+                    w.Timers.Add(new WorldTimer(dropDelay * 1000, (world, t) => { w.EnterWorld(entity); }));
+                    w.Timers.Add(new WorldTimer(despawnTime * 1000, (world, t) =>
+                      {
+                          try
+                          {
+                              w.LeaveWorld(entity);
+                          }
+                          catch (Exception ex)
+                          {
+                              log.ErrorFormat("Couldn't despawn portal.\n{0}", ex);
+                          }
+                      }));
                 }
             };
         }

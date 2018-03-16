@@ -18,9 +18,9 @@ namespace gameserver.networking.handlers
             if (client.Player.Owner == null) return;
             client.Manager.Logic.AddPendingAction(t =>
             {
-                target = client.Player.Owner.GetEntity(packet.ObjectId) is Player? client.Player.Owner.GetEntity(packet.ObjectId) as Player : null;
+                target = client.Player.Owner.GetEntity(packet.ObjectId) is Player ? client.Player.Owner.GetEntity(packet.ObjectId) as Player : null;
                 if (target == null) return;
-                if(client.Account.AccountId == target.AccountId)
+                if (client.Account.AccountId == target.AccountId)
                 {
                     SendFailure("You cannot do that with yourself.");
                     return;

@@ -25,9 +25,9 @@ namespace gameserver.networking
         public void Handle(Client client, IncomingMessage packet)
         {
             this.client = client;
-            HandlePacket(client, (T) packet);
+            HandlePacket(client, (T)packet);
         }
 
-        protected void SendFailure(string text) => client.SendMessage(new FAILURE {ErrorId = 0, ErrorDescription = text});
+        protected void SendFailure(string text) => client.SendMessage(new FAILURE { ErrorId = 0, ErrorDescription = text });
     }
 }

@@ -30,10 +30,10 @@ namespace gameserver.realm.entity.player
         public void SendInfoWithTokens(string key, params KeyValuePair<string, object>[] tokens)
         {
             var toSend = "{\"key\":\"" + key + "\"";
-            if(tokens != null)
+            if (tokens != null)
             {
                 toSend += ",\"tokens\":{";
-                for(var i = 0; i < tokens.Length; i++)
+                for (var i = 0; i < tokens.Length; i++)
                 {
                     toSend += "\"" + tokens[i].Key + "\":\"" + tokens[i].Value + "\"";
                     if (i + 1 != tokens.Length)

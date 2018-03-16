@@ -7,7 +7,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using gameserver.networking.outgoing;
-using common;
+using core;
 
 #endregion
 
@@ -19,13 +19,13 @@ namespace gameserver.networking
 
         static Message()
         {
-            foreach (Type i in typeof (Message).Assembly.GetTypes())
-                if (typeof (Message).IsAssignableFrom(i) && !i.IsAbstract)
+            foreach (Type i in typeof(Message).Assembly.GetTypes())
+                if (typeof(Message).IsAssignableFrom(i) && !i.IsAbstract)
                 {
-                    Message pkt = (Message) Activator.CreateInstance(i);
+                    Message pkt = (Message)Activator.CreateInstance(i);
                     if (!(pkt is OutgoingMessage))
                         //if (!Packets.ContainsKey(pkt.ID))
-                            Packets.Add(pkt.ID, pkt);
+                        Packets.Add(pkt.ID, pkt);
                 }
         }
 
@@ -45,10 +45,10 @@ namespace gameserver.networking
             MemoryStream s = new MemoryStream(buff, offset + 5, buff.Length - offset - 5);
             Write(new NWriter(s));
 
-            int len = (int) s.Position;
+            int len = (int)s.Position;
             Crypt(client, buff, offset + 5, len);
             Buffer.BlockCopy(BitConverter.GetBytes(IPAddress.HostToNetworkOrder(len + 5)), 0, buff, offset, 4);
-            buff[offset + 4] = (byte) ID;
+            buff[offset + 4] = (byte)ID;
             return len + 5;
         }
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using common;
+using core;
 using gameserver.networking;
 using gameserver.realm.entity;
 using gameserver.realm.terrain;
@@ -137,7 +137,7 @@ namespace gameserver.realm.world
                 vaultChestPosition.RemoveAt(0);
 
                 _vaultChests[Tuple.Create(con, i)] = con.UpdateCount;
-            } 
+            }
 
             foreach (IntPoint i in giftChestPosition)
             {

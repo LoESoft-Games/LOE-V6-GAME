@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using gameserver.realm.entity.player;
 
 #endregion
 

@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using System.Collections.Generic;
 using gameserver.realm;
 using gameserver.realm.entity;

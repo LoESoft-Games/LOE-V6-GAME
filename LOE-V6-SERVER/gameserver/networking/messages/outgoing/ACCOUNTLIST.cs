@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -31,7 +31,7 @@ namespace gameserver.networking.outgoing
         protected override void Write(NWriter wtr)
         {
             wtr.Write(AccountListId);
-            wtr.Write((ushort) AccountIds.Length);
+            wtr.Write((ushort)AccountIds.Length);
             foreach (string i in AccountIds)
                 wtr.WriteUTF(i);
             wtr.Write(LockAction);

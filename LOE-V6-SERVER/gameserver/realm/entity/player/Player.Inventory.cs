@@ -50,12 +50,12 @@
                 soulbound = true;
             }
 
-            var container = new Container(Manager, bagId, 1000*60, true);
+            var container = new Container(Manager, bagId, 1000 * 60, true);
             if (soulbound)
-                container.BagOwners = new [] { AccountId };
+                container.BagOwners = new[] { AccountId };
             container.Inventory[0] = i;
-            container.Move(X + (float) ((invRand.NextDouble()*2 - 1)*0.5),
-                Y + (float) ((invRand.NextDouble()*2 - 1)*0.5));
+            container.Move(X + (float)((invRand.NextDouble() * 2 - 1) * 0.5),
+                Y + (float)((invRand.NextDouble() * 2 - 1) * 0.5));
             container.Size = 75;
             Owner.EnterWorld(container);
         }

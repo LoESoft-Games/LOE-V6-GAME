@@ -21,7 +21,7 @@ namespace gameserver.realm
 
         public int MsPT;
         public int TPS;
-        
+
         public LogicTicker(RealmManager manager)
         {
             Manager = manager;

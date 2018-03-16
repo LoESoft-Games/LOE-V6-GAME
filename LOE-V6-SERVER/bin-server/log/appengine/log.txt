@@ -1,45 +1,6 @@
-2017-12-25 18:06:14,024 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
-2017-12-25 18:06:14,035 [Entry] INFO  AutoAssign - Settings not found.
-2017-12-25 18:06:14,270 [Entry] INFO  ISManager - Server's ID is b3c4f72b-d5c9-4de5-95a4-70e3dd4f6706
-2017-12-25 18:06:14,461 [5] INFO  ISManager - Server "b3c4f72b-d5c9-4de5-95a4-70e3dd4f6706" (Account Server) joined the network.
-2017-12-25 18:07:50,363 [18] INFO  AppEngine - [localhost] Request	->	/app/getLanguageStrings
-2017-12-25 18:07:50,434 [18] INFO  AppEngine - [localhost] Request	->	/security/securityProtocols
-2017-12-25 18:07:50,705 [18] INFO  AppEngine - [localhost] Request	->	/app/init
-2017-12-25 18:07:51,507 [18] INFO  AppEngine - [localhost] Request	->	/char/list
-2017-12-25 18:09:04,728 [Entry] INFO  AutoAssign - Saving settings for "autoId"...
-2017-12-25 18:09:04,730 [10] INFO  ISManager - Server "b3c4f72b-d5c9-4de5-95a4-70e3dd4f6706" quited the network.
-2017-12-25 18:12:23,044 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
-2017-12-25 18:12:23,053 [Entry] INFO  AutoAssign - Settings loaded.
-2017-12-25 18:12:23,279 [Entry] INFO  ISManager - Server's ID is 892eaeb3-d656-476b-bc59-32760d013e73
-2017-12-25 18:12:23,418 [11] INFO  ISManager - Server "892eaeb3-d656-476b-bc59-32760d013e73" (Account Server) joined the network.
-2017-12-25 18:12:48,010 [9] INFO  AppEngine - [localhost] Request	->	/app/getLanguageStrings
-2017-12-25 18:12:48,072 [9] INFO  AppEngine - [localhost] Request	->	/security/securityProtocols
-2017-12-25 18:12:48,146 [9] INFO  AppEngine - [localhost] Request	->	/app/init
-2017-12-25 18:12:48,224 [9] INFO  AppEngine - [localhost] Request	->	/char/list
-2017-12-25 18:12:57,719 [Entry] INFO  AutoAssign - Saving settings for "autoId"...
-2017-12-25 18:12:57,720 [10] INFO  ISManager - Server "892eaeb3-d656-476b-bc59-32760d013e73" quited the network.
-2017-12-25 18:13:06,048 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
-2017-12-25 18:13:06,058 [Entry] INFO  AutoAssign - Settings loaded.
-2017-12-25 18:13:06,279 [Entry] INFO  ISManager - Server's ID is bda31ad4-34aa-4503-826c-b83d655434b2
-2017-12-25 18:13:06,414 [10] INFO  ISManager - Server "bda31ad4-34aa-4503-826c-b83d655434b2" (Account Server) joined the network.
-2017-12-25 18:13:12,814 [7] INFO  AppEngine - [localhost] Request	->	/app/getLanguageStrings
-2017-12-25 18:13:12,864 [7] INFO  AppEngine - [localhost] Request	->	/security/securityProtocols
-2017-12-25 18:13:13,017 [7] INFO  AppEngine - [localhost] Request	->	/app/init
-2017-12-25 18:13:13,097 [7] INFO  AppEngine - [localhost] Request	->	/char/list
-2017-12-25 18:14:30,576 [Entry] INFO  AutoAssign - Saving settings for "autoId"...
-2017-12-25 18:14:30,577 [10] INFO  ISManager - Server "bda31ad4-34aa-4503-826c-b83d655434b2" quited the network.
-2017-12-25 18:15:01,767 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
-2017-12-25 18:15:01,777 [Entry] INFO  AutoAssign - Settings loaded.
-2017-12-25 18:15:01,997 [Entry] INFO  ISManager - Server's ID is 4fbb38a1-e049-4db4-8de0-e66a6feef31d
-2017-12-25 18:15:02,133 [5] INFO  ISManager - Server "4fbb38a1-e049-4db4-8de0-e66a6feef31d" (Account Server) joined the network.
-2017-12-25 18:15:08,727 [7] INFO  AppEngine - [localhost] Request	->	/app/getLanguageStrings
-2017-12-25 18:15:08,771 [7] INFO  AppEngine - [localhost] Request	->	/security/securityProtocols
-2017-12-25 18:15:08,829 [7] INFO  AppEngine - [localhost] Request	->	/app/init
-2017-12-25 18:15:08,907 [7] INFO  AppEngine - [localhost] Request	->	/char/list
-2017-12-25 18:15:09,189 [3] INFO  AppEngine - [localhost] Request	->	/app/inGameNews/getNews
-2017-12-25 18:15:09,504 [3] INFO  AppEngine - [localhost] Request	->	/package/getPackages
-2017-12-25 18:15:09,862 [3] INFO  AppEngine - [localhost] Request	->	/app/globalNews
-2017-12-25 18:15:10,696 [3] INFO  AppEngine - [localhost] Request	->	/mysterybox/getBoxes
-2017-12-25 18:15:46,274 [14] INFO  AppEngine - [localhost] Request	->	/app/globalNews
-2017-12-25 18:17:20,800 [Entry] INFO  AutoAssign - Saving settings for "autoId"...
-2017-12-25 18:17:20,802 [11] INFO  ISManager - Server "4fbb38a1-e049-4db4-8de0-e66a6feef31d" quited the network.
+2018-03-16 13:40:26,488 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
+2018-03-16 13:40:26,499 [Entry] INFO  AutoAssign - Settings not found.
+2018-03-16 13:40:26,962 [Entry] INFO  ISManager - Server's ID is e2198974-d86e-45f3-90ac-0291b2047d32
+2018-03-16 13:40:27,154 [9] INFO  ISManager - Server "e2198974-d86e-45f3-90ac-0291b2047d32" (Account Server) joined the network.
+2018-03-16 13:41:59,988 [10] INFO  ISManager - Server "e2198974-d86e-45f3-90ac-0291b2047d32" quited the network.
+2018-03-16 13:42:00,003 [Entry] INFO  AutoAssign - Saving settings for "autoId"...

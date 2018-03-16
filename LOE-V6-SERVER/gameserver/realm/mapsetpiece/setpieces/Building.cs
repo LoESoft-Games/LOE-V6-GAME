@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using common;
+using core;
 using gameserver.realm.terrain;
 
 #endregion
@@ -32,9 +32,9 @@ namespace gameserver.realm.mapsetpiece
                 t[w - 1, y] = 1;
             }
 
-            int midPtH = h/2 + rand.Next(-2, 3); //Mid hori wall
+            int midPtH = h / 2 + rand.Next(-2, 3); //Mid hori wall
             int sepH = rand.Next(2, 4);
-            if (rand.Next()%2 == 0)
+            if (rand.Next() % 2 == 0)
             {
                 for (int x = sepH; x < w; x++)
                     t[x, midPtH] = 1;
@@ -46,7 +46,7 @@ namespace gameserver.realm.mapsetpiece
             }
 
             int begin, end;
-            if (rand.Next()%2 == 0)
+            if (rand.Next() % 2 == 0)
             {
                 begin = 0;
                 end = midPtH;
@@ -57,9 +57,9 @@ namespace gameserver.realm.mapsetpiece
                 end = h;
             }
 
-            int midPtV = w/2 + rand.Next(-2, 3); //Mid vert wall
+            int midPtV = w / 2 + rand.Next(-2, 3); //Mid vert wall
             int sepW = rand.Next(2, 4);
-            if (rand.Next()%2 == 0)
+            if (rand.Next() % 2 == 0)
             {
                 for (int y = begin + sepW; y < end; y++)
                     t[midPtV, y] = 1;
@@ -76,7 +76,7 @@ namespace gameserver.realm.mapsetpiece
 
             for (int x = 0; x < w; x++) //Corruption
                 for (int y = 0; y < h; y++)
-                    if (rand.Next()%2 == 0)
+                    if (rand.Next() % 2 == 0)
                         t[x, y] = 0;
 
             int rotation = rand.Next(0, 4); //Rotation

@@ -1,0 +1,35 @@
+[
+  {
+    "slot": 1,
+    "linkType": 1,
+    "platform": "kabam.com,kongregate,steam,rotmg",
+    "startTime": 1501545600000,
+    "title": "MotMG & Lost Halls",
+    "image": "https://storage.googleapis.com/rotmg_images/MotMG%202017/MotMG%20Patch.png",
+    "endTime": 1506729600000,
+    "linkDetail": "https://www.reddit.com/r/RotMG/",
+    "priority": 100
+  },
+  {
+    "slot": 2,
+    "linkType": 2,
+    "platform": "kabam.com,kongregate,steam,rotmg",
+    "startTime": 1501545600000,
+    "title": "DECA Anniversary Pack",
+    "image": "https://storage.googleapis.com/rotmg_images/MotMG%202017/Deca_anniversary_small.png",
+    "endTime": 1504681140000,
+    "linkDetail": 702,
+    "priority": 95
+  },
+  {
+    "slot": 3,
+    "linkType": 2,
+    "platform": "kabam.com,kongregate,steam,rotmg",
+    "startTime": 1493020800000,
+    "title": "Super Ambro Pack",
+    "image": "https://storage.googleapis.com/rotmg_images/News/x5AmbroNews.png",
+    "endTime": 4080326400000,
+    "linkDetail": 704,
+    "priority": 90
+  }
+]

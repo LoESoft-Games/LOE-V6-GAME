@@ -12,7 +12,7 @@ namespace gameserver.realm.world
 {
     internal class GameWorld : World
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof (GameWorld));
+        private static readonly ILog log = LogManager.GetLogger(typeof(GameWorld));
 
         private readonly int mapId;
         private readonly bool oryxPresent;

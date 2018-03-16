@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PackageResponse>
+  <Packages>
+    <Package id="704">
+      <Name>Super Ambro Pack</Name>
+      <Price>3500</Price>
+      <Quantity>-1</Quantity>
+      <MaxPurchase>-1</MaxPurchase>
+      <Weight>2</Weight>
+      <BgURL>https://loesoft-games.github.io/remote/assets/package/x6AmbroPack.png</BgURL>
+      <EndDate>4090521600</EndDate>
+      <Contents>3276,3276,3276,3276,3276,3276</Contents>
+    </Package>
+  </Packages>
+</PackageResponse>

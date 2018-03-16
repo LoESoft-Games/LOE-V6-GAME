@@ -64,121 +64,121 @@ namespace gameserver.logic
                 )
             )
         .Init("Arachna Web Spoke 2",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
                 new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 180, fixedAngle: 180, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
                     new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
                     ),
                 new State("die",
-					new Suicide()
+                    new Suicide()
                     )
                 )
             )
         .Init("Arachna Web Spoke 3",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
                 new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 300, fixedAngle: 300, coolDown: 200),
                     new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
                     ),
                 new State("die",
-					new Suicide()
+                    new Suicide()
                     )
                 )
             )
         .Init("Arachna Web Spoke 4",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
                 new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
-                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
-                    ),
-                new State("die",
-					new Suicide()
-                    )
-                )
-            )
-        .Init("Arachna Web Spoke 5",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
-                new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
-                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
-                    ),
-                new State("die",
-					new Suicide()
-                    )
-                )
-            )
-        .Init("Arachna Web Spoke 6",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
-                new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
-                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
-                    ),
-                new State("die",
-					new Suicide()
-                    )
-                )
-            )
-        .Init("Arachna Web Spoke 7",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
-                new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
                     new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
                     ),
                 new State("die",
-					new Suicide()
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Arachna Web Spoke 5",
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
+                new State("idle",
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
+                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Arachna Web Spoke 6",
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
+                new State("idle",
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
+                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Arachna Web Spoke 7",
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
+                new State("idle",
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
+                    new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )
         .Init("Arachna Web Spoke 8",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
                 new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 120, fixedAngle: 120, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
                     new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
                     ),
                 new State("die",
-					new Suicide()
+                    new Suicide()
                     )
                 )
             )
         .Init("Arachna Web Spoke 9",
-			new State(
-				new AddCond(ConditionEffectIndex.Invulnerable),
+            new State(
+                new AddCond(ConditionEffectIndex.Invulnerable),
                 new State("idle",
-					new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
+                    new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 0, fixedAngle: 0, coolDown: 200),
                     new Shoot(radius: 99, count: 1, projectileIndex: 0, shootAngle: 240, fixedAngle: 240, coolDown: 200),
                     new EntityNotExistsTransition(target: "Arachna the Spider Queen", dist: 99, targetState: "die")
                     ),
                 new State("die",
-					new Suicide()
+                    new Suicide()
                     )
                 )
             )
        .Init("Spider Egg Sac",
-			new State(
+            new State(
                 new TransformOnDeath(target: "Green Den Spider Hatchling", min: 2, max: 7),
                 new State("idle",
                     new PlayerWithinTransition(dist: 2, targetState: "Explode")
                     ),
                 new State("Explode",
-					new Suicide()
+                    new Suicide()
                     )
                 )
             )
        .Init("Green Den Spider Hatchling",
-			new State(
+            new State(
                 new Shoot(radius: 9, predictive: 0.5, coolDown: 1000),
                 new Chase(speed: 0.8, acquireRange: 10, range: 8),
                 new Wander(speed: 0.4)
@@ -195,7 +195,7 @@ namespace gameserver.logic
                 )
             )
        .Init("Red Spotted Den Spider",
-			new State(
+            new State(
                 new Shoot(radius: 9, predictive: 0.5, coolDown: 500),
                 new Chase(speed: 1, acquireRange: 10, range: 8),
                 new Wander(speed: 0.4)
@@ -224,5 +224,5 @@ namespace gameserver.logic
                 new ItemLoot("Healing Ichor", 0.05)
                 )
            );
-     }
+    }
 }

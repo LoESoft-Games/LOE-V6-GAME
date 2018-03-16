@@ -23,7 +23,7 @@ namespace gameserver.networking.handlers
             client.Manager.Logic.AddPendingAction(t =>
             {
                 IContainer container = client.Player.Owner.GetEntity(packet.SlotObject.ObjectId) as IContainer;
-                if(container == null) return;
+                if (container == null) return;
                 Item item;
                 switch (packet.SlotObject.SlotId)
                 {
@@ -70,7 +70,8 @@ namespace gameserver.networking.handlers
                                     case 450: { client.Player.HpPotionPrice = 600; } break;
                                     case 600: break;
                                 }
-                                client.Player.Owner.Timers.Add(new WorldTimer(8000, (world, j) => {
+                                client.Player.Owner.Timers.Add(new WorldTimer(8000, (world, j) =>
+                                {
                                     switch (client.Player.HpPotionPrice)
                                     {
                                         case 5: break;
@@ -139,7 +140,8 @@ namespace gameserver.networking.handlers
                                     case 450: { client.Player.MpPotionPrice = 600; } break;
                                     case 600: break;
                                 }
-                                client.Player.Owner.Timers.Add(new WorldTimer(8000, (world, j) => {
+                                client.Player.Owner.Timers.Add(new WorldTimer(8000, (world, j) =>
+                                {
                                     switch (client.Player.MpPotionPrice)
                                     {
                                         case 5: break;

@@ -28,7 +28,7 @@ namespace gameserver.logic.behaviors
         {
             int index;
             if (state == null) index = -1;
-            else index = (int) state;
+            else index = (int)state;
 
             if (index < 0) //select
             {

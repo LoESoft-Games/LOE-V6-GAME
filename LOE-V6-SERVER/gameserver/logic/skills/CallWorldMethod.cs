@@ -27,7 +27,7 @@ namespace gameserver.logic.behaviors
             {
                 Type type = host.Owner.GetType();
                 MethodInfo method = type.GetMethod(targetMethod);
-                if(method != null)
+                if (method != null)
                     method.Invoke(host.Owner, parameters);
             }
         }

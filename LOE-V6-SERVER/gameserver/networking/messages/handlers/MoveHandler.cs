@@ -34,13 +34,13 @@ namespace gameserver.networking.handlers
 
         private static void CheckLabConditions(Entity player, MOVE packet)
         {
-            WmapTile tile = player.Owner.Map[(int) packet.Position.X, (int) packet.Position.Y];
+            WmapTile tile = player.Owner.Map[(int)packet.Position.X, (int)packet.Position.Y];
             switch (tile.TileId)
             {
                 //Green water
                 case 0xa9:
                 case 0x82:
-                    if(tile.ObjId != 0) return;
+                    if (tile.ObjId != 0) return;
                     if (!player.HasConditionEffect(ConditionEffectIndex.Hexed) ||
                         !player.HasConditionEffect(ConditionEffectIndex.Stunned) ||
                         !player.HasConditionEffect(ConditionEffectIndex.Speedy))

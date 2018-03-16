@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 using System;
 using System.Globalization;
 using gameserver.networking.incoming;
@@ -69,20 +69,20 @@ namespace gameserver.networking.handlers
                         case 0x0d40:
                         case 0x070d:
                         case 0x070e:
-                        {
-                            if (player.Manager.LastWorld.ContainsKey(player.AccountId))
                             {
-                                World w = player.Manager.LastWorld[player.AccountId];
+                                if (player.Manager.LastWorld.ContainsKey(player.AccountId))
+                                {
+                                    World w = player.Manager.LastWorld[player.AccountId];
 
-                                if (w != null && player.Manager.Worlds.ContainsKey(w.Id))
-                                    world = w;
+                                    if (w != null && player.Manager.Worlds.ContainsKey(w.Id))
+                                        world = w;
+                                    else
+                                        world = player.Manager.GetWorld(World.NEXUS_ID);
+                                }
                                 else
                                     world = player.Manager.GetWorld(World.NEXUS_ID);
+                                setWorldInstance = false;
                             }
-                            else
-                                world = player.Manager.GetWorld(World.NEXUS_ID);
-                            setWorldInstance = false;
-                        }
                             break;
                         case 0x0750:
                             world = player.Manager.GetWorld(World.MARKET);
@@ -106,8 +106,8 @@ namespace gameserver.networking.handlers
                             break;
                         default:
                             {
-                            Type worldType =
-                                Type.GetType("gameserver.realm.world." + desc.DungeonName.Replace(" ", string.Empty).Replace("'", string.Empty));
+                                Type worldType =
+                                    Type.GetType("gameserver.realm.world." + desc.DungeonName.Replace(" ", string.Empty).Replace("'", string.Empty));
                                 if (worldType != null)
                                 {
                                     try
@@ -121,8 +121,8 @@ namespace gameserver.networking.handlers
                                         player.SendError($"Dungeon instance \"{desc.DungeonName}\" isn't declared yet and under maintenance until further notice.");
                                     }
                                 }
-                            else
-                                player.SendHelp($"Dungeon instance \"{desc.DungeonName}\" isn't declared yet and under maintenance until further notice.");
+                                else
+                                    player.SendHelp($"Dungeon instance \"{desc.DungeonName}\" isn't declared yet and under maintenance until further notice.");
                             }
                             break;
                     }

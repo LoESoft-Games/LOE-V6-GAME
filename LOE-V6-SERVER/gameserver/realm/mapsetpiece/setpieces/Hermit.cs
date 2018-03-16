@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 using System;
 using gameserver.realm.terrain;
 

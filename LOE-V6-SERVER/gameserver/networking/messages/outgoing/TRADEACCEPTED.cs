@@ -1,6 +1,6 @@
 ﻿#region
 
-using common;
+using core;
 
 #endregion
 
@@ -28,10 +28,10 @@ namespace gameserver.networking.outgoing
 
         protected override void Write(NWriter wtr)
         {
-            wtr.Write((ushort) MyOffers.Length);
+            wtr.Write((ushort)MyOffers.Length);
             foreach (bool i in MyOffers)
                 wtr.Write(i);
-            wtr.Write((ushort) YourOffers.Length);
+            wtr.Write((ushort)YourOffers.Length);
             foreach (bool i in YourOffers)
                 wtr.Write(i);
         }

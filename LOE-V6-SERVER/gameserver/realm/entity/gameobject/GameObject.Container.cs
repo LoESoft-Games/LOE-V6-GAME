@@ -28,7 +28,7 @@ namespace gameserver.realm.entity
         }
 
         public Container(RealmManager manager, XElement node)
-            : base(manager, (ushort) Utils.FromString(node.Attribute("type").Value), null, false, false, false)
+            : base(manager, (ushort)Utils.FromString(node.Attribute("type").Value), null, false, false, false)
         {
             SlotTypes = Utils.FromCommaSepString32(node.Element("SlotTypes").Value);
             XElement eq = node.Element("Equipment");
@@ -66,7 +66,7 @@ namespace gameserver.realm.entity
             stats[StatsType.Inventory5] = (Inventory[5] != null ? Inventory[5].ObjectType : -1);
             stats[StatsType.Inventory6] = (Inventory[6] != null ? Inventory[6].ObjectType : -1);
             stats[StatsType.Inventory7] = (Inventory[7] != null ? Inventory[7].ObjectType : -1);
-            if(BagOwners != null)
+            if (BagOwners != null)
                 stats[StatsType.OwnerAccountId] = BagOwners.Length == 1 ? BagOwners[0] : "-1";
             base.ExportStats(stats);
         }

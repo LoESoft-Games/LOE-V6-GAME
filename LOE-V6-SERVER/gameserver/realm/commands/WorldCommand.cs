@@ -7,7 +7,7 @@ using gameserver.networking.incoming;
 using gameserver.networking.outgoing;
 using gameserver.realm.entity;
 using gameserver.realm.entity.player;
-using common.config;
+using core.config;
 using gameserver.realm.commands.mreyeball;
 
 #endregion
@@ -38,7 +38,7 @@ namespace gameserver.realm.commands
 
         protected override bool Process(Player player, RealmTime time, string[] args)
         {
-            if(string.IsNullOrWhiteSpace(args[0]))
+            if (string.IsNullOrWhiteSpace(args[0]))
             {
                 player.SendInfo("Usage: /trade <player name>");
                 return false;

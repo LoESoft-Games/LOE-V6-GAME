@@ -1,6 +1,6 @@
 ﻿#region
 
-using common.config;
+using core.config;
 
 #endregion
 

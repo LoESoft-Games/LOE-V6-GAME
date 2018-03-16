@@ -21,7 +21,7 @@ namespace gameserver.networking
             Console.ResetColor();
         }
 
-        public enum DisconnectReason:byte
+        public enum DisconnectReason : byte
         {
             FAILED_TO_LOAD_CHARACTER = 1,
             OUTDATED_CLIENT = 2,
@@ -61,7 +61,7 @@ namespace gameserver.networking
 
         public void _(string accId, Socket skt, DisconnectReason type)
         {
-            string response = $"[{time[1]}] [{nameof(Client)}] [({(int) type}) {type.ToString()}] Disconnect\t->\tplayer id {accId} to {skt.RemoteEndPoint.ToString().Split(':')[0]}";
+            string response = $"[{time[1]}] [{nameof(Client)}] [({(int)type}) {type.ToString()}] Disconnect\t->\tplayer id {accId} to {skt.RemoteEndPoint.ToString().Split(':')[0]}";
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(response);
             Console.ResetColor();
@@ -76,7 +76,7 @@ namespace gameserver.networking
             {
                 string[] labels = new string[] { "{CLIENT_NAME}" };
                 string[] arguments = new string[] { Account.Name };
-                
+
                 SendMessage(new FAILURE
                 {
                     ErrorId = Type.JSON_DIALOG,
@@ -122,7 +122,7 @@ namespace gameserver.networking
                 Program.Logger.Error($"[{nameof(Client)}] Save exception:\n{ex}");
             }
         }
-        
+
         private async void Disconnect(Client client)
         {
             if (client == null)
@@ -157,7 +157,7 @@ namespace gameserver.networking
                     return;
 
                 _(Account.AccountId, Socket, type);
-                
+
                 State = ProtocolState.Disconnected;
 
                 if (Account != null)

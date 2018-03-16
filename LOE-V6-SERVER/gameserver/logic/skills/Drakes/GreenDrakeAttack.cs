@@ -51,7 +51,7 @@ namespace gameserver.logic.behaviors.Drakes
                         Effect = ConditionEffectIndex.Slowed,
                         DurationMS = 10000
                     });
-                    
+
                 }
                 cool = 300;
             }

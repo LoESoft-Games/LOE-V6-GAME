@@ -18,7 +18,7 @@ namespace gameserver.logic.behaviors
         public Flash(uint color, double flashPeriod, int flashRepeats)
         {
             this.color = color;
-            this.flashPeriod = (float) flashPeriod;
+            this.flashPeriod = (float)flashPeriod;
             this.flashRepeats = flashRepeats;
         }
 
@@ -31,7 +31,7 @@ namespace gameserver.logic.behaviors
             host.Owner.BroadcastPacket(new SHOWEFFECT
             {
                 EffectType = EffectType.Flash,
-                PosA = new Position {X = flashPeriod, Y = flashRepeats},
+                PosA = new Position { X = flashPeriod, Y = flashRepeats },
                 TargetId = host.Id,
                 Color = new ARGB(color)
             }, null);

@@ -20,7 +20,7 @@ namespace gameserver.networking.handlers
                 SellableObject obj = client.Player.Owner.GetEntity(packet.ObjectId) as SellableObject;
                 if (obj != null)
                     for (int i = 0; i < packet.Quantity; i++)
- 						obj.Buy(client.Player);
+                        obj.Buy(client.Player);
             }, PendingPriority.Networking);
         }
     }
