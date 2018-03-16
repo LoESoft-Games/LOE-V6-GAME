@@ -1,6 +1,0 @@
-2018-03-16 13:40:26,488 [Entry] INFO  AutoAssign - Loading auto assign settings for "autoId"...
-2018-03-16 13:40:26,499 [Entry] INFO  AutoAssign - Settings not found.
-2018-03-16 13:40:26,962 [Entry] INFO  ISManager - Server's ID is e2198974-d86e-45f3-90ac-0291b2047d32
-2018-03-16 13:40:27,154 [9] INFO  ISManager - Server "e2198974-d86e-45f3-90ac-0291b2047d32" (Account Server) joined the network.
-2018-03-16 13:41:59,988 [10] INFO  ISManager - Server "e2198974-d86e-45f3-90ac-0291b2047d32" quited the network.
-2018-03-16 13:42:00,003 [Entry] INFO  AutoAssign - Saving settings for "autoId"...

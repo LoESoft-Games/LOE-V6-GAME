@@ -1,7 +1,0 @@
-﻿[
-  {
-    "title": "Invalid Connection",
-    "titleColor": 2003199,
-    "description": "{CLIENT_NAME}, your account already disconnected from server and you are attempting to login with an invalid key. <b>Please go to main menu to avoid this message.</b>"
-  }
-]

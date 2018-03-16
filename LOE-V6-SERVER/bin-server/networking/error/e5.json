@@ -1,7 +1,0 @@
-﻿[
-  {
-    "title": "Login Denied",
-    "titleColor": 16776960,
-    "description": "{CLIENT_NAME}, you lost connection to the server. <b>Please go to main menu to avoid this message.</b>"
-  }
-]
